@@ -40,6 +40,7 @@ def selection_sort_debug(data, reverse = False):
     length = len(data)
 
     steps = 0  # 记录操作步数
+    swaps = 0  # 记录交换次数
 
     for i in range(length):
         for j in range(i + 1, length):  # 从i + 1开始 减少循环次数
@@ -47,15 +48,16 @@ def selection_sort_debug(data, reverse = False):
                 tmp = data[j]
                 data[j] = data[i]
                 data[i] = tmp
+                swaps += 1
+
             elif reverse:  # 如果数据从小到大
                 tmp = data[j]
                 data[j] = data[i]
                 data[i] = tmp
+                swaps += 1
             print(data)  # 打印每步操作之后结果
             steps += 1
     print("输入数据长度:", length,
-          "执行步数:", steps)
+          "执行步数:", steps,
+          "交换次数:", swaps)
     return data
-
-
-selection_sort_debug([9, 8, 7, 6, 1, 2, 3, 4, 5])
