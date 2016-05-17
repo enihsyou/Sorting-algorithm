@@ -19,6 +19,7 @@ def selection_sort(data, reverse = False):
     for i in range(length):
         for j in range(i + 1, length):  # 从i + 1开始 减少循环次数
             if data[i] < data[j]:  # 从大到小 如果反了交换
+                if reverse: continue
                 tmp = data[j]
                 data[j] = data[i]
                 data[i] = tmp
@@ -45,6 +46,7 @@ def selection_sort_debug(data, reverse = False):
     for i in range(length):
         for j in range(i + 1, length):  # 从i + 1开始 减少循环次数
             if data[i] < data[j]:  # 从大到小 如果反了交换
+                if reverse: continue
                 tmp = data[j]
                 data[j] = data[i]
                 data[i] = tmp
@@ -61,3 +63,10 @@ def selection_sort_debug(data, reverse = False):
           "执行步数:", steps,
           "交换次数:", swaps)
     return data
+
+# Test Part
+
+# selection_sort_debug([4, 7, 6, 5, 3, 2, 1], reverse = True)
+# selection_sort_debug([4, 7, 6, 5, 3, 2, 1])
+# print(selection_sort([4, 7, 6, 5, 3, 2, 1], reverse = True))
+# print(selection_sort([4, 7, 6, 5, 3, 2, 1]))
