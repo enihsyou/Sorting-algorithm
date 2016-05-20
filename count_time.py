@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 """
 File name: step_by_step
 Reference: http://www.cnblogs.com/rhcad/archive/2011/12/21/2295507.html
@@ -9,10 +10,21 @@ import time
 
 
 def count_time(func):
-    def _deco(data, reverse = False):
+    """
+    计时器装饰器
+
+    Args:
+        func (function): 被装饰函数
+
+    Returns:
+        function: 返回
+    """
+
+    def _deco(data, reverse=False):
         start_time = time.perf_counter()
-        func(data, reverse)
+        result = func(data, reverse)
         end_time = time.perf_counter()
         print("执行时间:", (end_time - start_time))
+        return result
 
     return _deco
