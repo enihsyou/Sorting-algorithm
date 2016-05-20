@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 """
-File name: selection_sort
-Reference: https://en.wikipedia.org/wiki/Selection_sort
-Introduction: 选择排序 O(n^2)
+File name: bubble_sort
+Reference: https://en.wikipedia.org/wiki/Bubble_sort
+Introduction: 冒泡排序 O(n^2)
 Time: 2016-05-15
 Last modified: 2016-05-20
 By: enihsyou
@@ -10,9 +10,9 @@ By: enihsyou
 from count_time import *
 
 
-def selection_sort(data, reverse=False):
+def bubble_sort(data, reverse=False):
     """
-    Selection sort
+    Bubble sort
 
     输入一组数据 默认从大到小排序
     第一次就想出来的方式
@@ -41,9 +41,9 @@ def selection_sort(data, reverse=False):
 
 
 @count_time
-def selection_sort_debug(data, reverse=False):
+def bubble_sort_debug(data, reverse=False):
     """
-    Selection sort ver.debug
+    Bubble sort ver.debug
 
     输入一组数据 默认从大到小排序
     会输出每次的操作和进行的步数以及函数执行时间
@@ -84,15 +84,14 @@ def selection_sort_debug(data, reverse=False):
 """
 Test Part
 =========
-
-selection_sort_debug([4, 7, 6, 5, 3, 2, 1], reverse = True)
-selection_sort_debug([4, 7, 6, 5, 3, 2, 1])
-print(selection_sort([4, 7, 6, 5, 3, 2, 1], reverse = True))
-print(selection_sort([4, 7, 6, 5, 3, 2, 1]))
 """
+bubble_sort_debug([4, 7, 6, 5, 3, 2, 1], reverse=True)
+bubble_sort_debug([4, 7, 6, 5, 3, 2, 1])
+print(bubble_sort([4, 7, 6, 5, 3, 2, 1], reverse=True))
+print(bubble_sort([4, 7, 6, 5, 3, 2, 1]))
 
 if __name__ == '__main__':
-    print("选择排序法::输入数组进行测试")
+    print("冒泡排序法::输入数组进行测试")
     while True:
         inp = input()
         print(eval(inp))
