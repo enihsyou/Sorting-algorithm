@@ -1,18 +1,27 @@
+# -*- coding: utf-8 -*-
 """
 File name: selection_sort
 Reference: https://en.wikipedia.org/wiki/Selection_sort
 Introduction: 选择排序 O(n^2)
 Time: 2016-05-15
+Last modified: 2016-05-20
 By: enihsyou
 """
 from count_time import *
 
 
-def selection_sort(data, reverse = False):
+def selection_sort(data, reverse=False):
     """
     Selection sort
+
     输入一组数据 默认从大到小排序
     第一次就想出来的方式
+    Args:
+        data (list): 输入的数据，得是非空列表
+        reverse (bool): 是否从小到大排序 (默认否，即从大到小排序)
+
+    Returns:
+        data (list): 排序好的数据
     """
     length = len(data)
 
@@ -32,11 +41,18 @@ def selection_sort(data, reverse = False):
 
 
 @count_time
-def selection_sort_debug(data, reverse = False):
+def selection_sort_debug(data, reverse=False):
     """
     Selection sort ver.debug
+
     输入一组数据 默认从大到小排序
     会输出每次的操作和进行的步数以及函数执行时间
+    Args:
+        data (list): 输入的数据，得是非空列表
+        reverse (bool): 是否从小到大排序 (默认否，即从大到小排序)
+
+    Returns:
+        data (list): 排序好的数据
     """
     length = len(data)
 
@@ -64,9 +80,19 @@ def selection_sort_debug(data, reverse = False):
           "交换次数:", swaps)
     return data
 
-# Test Part
 
-# selection_sort_debug([4, 7, 6, 5, 3, 2, 1], reverse = True)
-# selection_sort_debug([4, 7, 6, 5, 3, 2, 1])
-# print(selection_sort([4, 7, 6, 5, 3, 2, 1], reverse = True))
-# print(selection_sort([4, 7, 6, 5, 3, 2, 1]))
+"""
+Test Part
+=========
+
+selection_sort_debug([4, 7, 6, 5, 3, 2, 1], reverse = True)
+selection_sort_debug([4, 7, 6, 5, 3, 2, 1])
+print(selection_sort([4, 7, 6, 5, 3, 2, 1], reverse = True))
+print(selection_sort([4, 7, 6, 5, 3, 2, 1]))
+"""
+
+if __name__ == '__main__':
+    print("选择排序法::输入数组进行测试")
+    while True:
+        inp = input()
+        print(eval(inp))
