@@ -7,7 +7,7 @@ Time: 2016-05-15
 Last modified: 2016-05-20
 By: enihsyou
 """
-from count_time import *
+from count_time import count_time
 
 
 def bubble_sort(data, reverse=False):
@@ -18,7 +18,7 @@ def bubble_sort(data, reverse=False):
     第一次就想出来的方式
     Args:
         data (list): 输入的数据，得是非空列表
-        reverse (bool): 是否从小到大排序 (默认否，即从大到小排序)
+        reverse (bool): 是否从小到大排序 (default: False，即从大到小排序)
 
     Returns:
         data (list): 排序好的数据
@@ -41,7 +41,7 @@ def bubble_sort(data, reverse=False):
 
 
 @count_time
-def bubble_sort_debug(data, reverse=False):
+def bubble_sort_debug(data, reverse=False, print_step=False):
     """
     Bubble sort ver.debug
 
@@ -49,8 +49,8 @@ def bubble_sort_debug(data, reverse=False):
     会输出每次的操作和进行的步数以及函数执行时间
     Args:
         data (list): 输入的数据，得是非空列表
-        reverse (bool): 是否从小到大排序 (默认否，即从大到小排序)
-
+        reverse (bool): 是否从小到大排序 (default: False，即从大到小排序)
+        print_step (bool): 是否打印每步过程 (default: False)
     Returns:
         data (list): 排序好的数据
     """
@@ -73,7 +73,7 @@ def bubble_sort_debug(data, reverse=False):
                 data[j] = data[i]
                 data[i] = tmp
                 swaps += 1
-            print(data)  # 打印每步操作之后结果
+            if print_step: print(data)  # 打印每步操作之后结果
             steps += 1
     print("输入数据长度:", length,
           "执行步数:", steps,
@@ -85,10 +85,10 @@ def bubble_sort_debug(data, reverse=False):
 Test Part
 =========
 """
-bubble_sort_debug([4, 7, 6, 5, 3, 2, 1], reverse=True)
-bubble_sort_debug([4, 7, 6, 5, 3, 2, 1])
-print(bubble_sort([4, 7, 6, 5, 3, 2, 1], reverse=True))
-print(bubble_sort([4, 7, 6, 5, 3, 2, 1]))
+# bubble_sort_debug([4, 7, 6, 5, 3, 2, 1], reverse=True)
+# bubble_sort_debug([4, 7, 6, 5, 3, 2, 1])
+# print(bubble_sort([4, 7, 6, 5, 3, 2, 1], reverse=True))
+# print(bubble_sort([4, 7, 6, 5, 3, 2, 1]))
 
 if __name__ == '__main__':
     print("冒泡排序法::输入数组进行测试")
