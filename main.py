@@ -47,11 +47,12 @@ def judge(random_list, debug=False, steps=False):
     for algo in algorithm.__all__:
         if debug:
             command = getattr(getattr(algorithm, algo), algo + '_debug')
-            command(random_list, False, steps)
+            command(random_list[:], False, steps)  # False:从大到小
         else:
             command = getattr(getattr(algorithm, algo), algo)
             print("调用函数: {}\n"
-                  "有序列表: \n{}\n".format(command.__name__, command(random_list)))
+                  "有序列表: \n{}\n".format(command.__name__,
+                                        command(random_list[:])))
 
 
 def main():
