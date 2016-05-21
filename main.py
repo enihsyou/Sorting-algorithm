@@ -6,7 +6,7 @@ File name: main
 Reference: 
 Introduction: 使用随机函数生成随机列表，调用排序算法多次测试 统计时间效率
 Time: 2016-05-20
-Last modified: 2016-05-20
+Last modified: 2016-05-21
 By: enihsyou
 """
 
@@ -78,7 +78,6 @@ if __name__ == '__main__':
         """
         while True:
             inp = input("\n数组大小: ")
-            ranlist = []  # 初始化列表
             try:
                 inp = int(inp)  # 转换成整数
                 ranlist = generate_list(inp)
