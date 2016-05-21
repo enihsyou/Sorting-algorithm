@@ -4,7 +4,7 @@ File name: bubble_sort
 Reference: https://en.wikipedia.org/wiki/Bubble_sort
 Introduction: 冒泡排序 O(n^2)
 Time: 2016-05-15
-Last modified: 2016-05-20
+Last modified: 2016-05-21
 By: enihsyou
 """
 from count_time import count_time
@@ -17,11 +17,11 @@ def bubble_sort(data, reverse=False):
     输入一组数据 默认从大到小排序
     第一次就想出来的方式
     Args:
-        data (list): 输入的数据，得是非空列表
+        data (list[int]): 输入的数据，得是非空列表
         reverse (bool): 是否从小到大排序 (default: False，即从大到小排序)
 
     Returns:
-        data (list): 排序好的数据
+        data (list[int]): 排序好的数据
     """
     length = len(data)
 
@@ -48,11 +48,11 @@ def bubble_sort_debug(data, reverse=False, print_step=False):
     输入一组数据 默认从大到小排序
     会输出每次的操作和进行的步数以及函数执行时间
     Args:
-        data (list): 输入的数据，得是非空列表
+        data (list[int]): 输入的数据，得是非空列表
         reverse (bool): 是否从小到大排序 (default: False，即从大到小排序)
         print_step (bool): 是否打印每步过程 (default: False)
     Returns:
-        data (list): 排序好的数据
+        data (list[int]): 排序好的数据
     """
     length = len(data)
 
