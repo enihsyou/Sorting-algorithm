@@ -47,10 +47,11 @@ def judge(random_list, debug=False, steps=False):
     for algo in algorithm.__all__:
         if debug:
             command = getattr(getattr(algorithm, algo), algo + '_debug')
-            return command(random_list, False, steps)
+            command(random_list, False, steps)
         else:
             command = getattr(getattr(algorithm, algo), algo)
-            return command(random_list)
+            print("调用函数: {}\n"
+                  "有序列表: \n{}\n".format(command.__name__, command(random_list)))
 
 
 def main():
@@ -77,7 +78,7 @@ if __name__ == '__main__':
             choice (str[int]): 选择的第几项
         """
         while True:
-            inp = input("\n数组大小: ")
+            inp = input("数组大小: ")
             try:
                 inp = int(inp)  # 转换成整数
                 ranlist = generate_list(inp)
@@ -85,12 +86,12 @@ if __name__ == '__main__':
                 main()
                 break
             if choice == '1':
-                print("待排列表: \n{}".format(ranlist))
+                print("待排列表: \n{}\n".format(ranlist))
                 continue
             else:
-                print("待排列表: \n{}".format(ranlist))
+                print("待排列表: \n{}\n".format(ranlist))
             if choice == '2':
-                print("有序列表: \n{}".format(judge(ranlist)))
+                judge(ranlist)
             elif choice == '3':
                 # print("有序列表: \n", judge(ranlist, debug=True))
                 judge(ranlist, debug=True)

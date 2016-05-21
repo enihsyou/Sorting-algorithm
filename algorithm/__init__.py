@@ -8,5 +8,6 @@ Last modified: 2016-05-21
 By: enihsyou
 """
 import algorithm.bubble_sort
+import algorithm.insertion_sort
 
-__all__ = ['bubble_sort']
+__all__ = ['bubble_sort', 'insertion_sort']

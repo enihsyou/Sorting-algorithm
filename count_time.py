@@ -31,10 +31,12 @@ def count_time(func):
         Returns:
             result (list[int]): 有序列表
         """
+        print("调用函数:", func.__name__[:-6])  # 去除"_debug"字样
         start_time = time.perf_counter()
         result = func(data, reverse, print_step)
+        # print(result) 输出排序结果
         end_time = time.perf_counter()
-        print("执行时间:", (end_time - start_time))
+        print("执行时间:", (end_time - start_time), "\n")
         return result
 
     return _deco

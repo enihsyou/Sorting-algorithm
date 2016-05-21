@@ -51,6 +51,7 @@ def bubble_sort_debug(data, reverse=False, print_step=False):
         data (list[int]): 输入的数据，得是非空列表
         reverse (bool): 是否从小到大排序 (default: False，即从大到小排序)
         print_step (bool): 是否打印每步过程 (default: False)
+
     Returns:
         data (list[int]): 排序好的数据
     """
@@ -77,7 +78,7 @@ def bubble_sort_debug(data, reverse=False, print_step=False):
             steps += 1
     print("输入数据长度:", length,
           "执行步数:", steps,
-          "交换次数:", swaps)
+          "操作次数:", swaps)
     return data
 
 
@@ -85,10 +86,15 @@ def bubble_sort_debug(data, reverse=False, print_step=False):
 Test Part
 =========
 """
-# bubble_sort_debug([4, 7, 6, 5, 3, 2, 1], reverse=True)
-# bubble_sort_debug([4, 7, 6, 5, 3, 2, 1])
-# print(bubble_sort([4, 7, 6, 5, 3, 2, 1], reverse=True))
+# 调用测试
 # print(bubble_sort([4, 7, 6, 5, 3, 2, 1]))
+# print(bubble_sort([4, 7, 6, 5, 3, 2, 1], reverse=True))
+# 计时测试
+# bubble_sort_debug([4, 7, 6, 5, 3, 2, 1])
+# bubble_sort_debug([4, 7, 6, 5, 3, 2, 1], reverse=True)
+# 步骤测试
+# bubble_sort_debug([4, 7, 6, 5, 3, 2, 1], print_step=True)
+# bubble_sort_debug([4, 7, 6, 5, 3, 2, 1], reverse=True, print_step=True)
 
 if __name__ == '__main__':
     print("冒泡排序法::输入数组进行测试")
