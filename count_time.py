@@ -22,6 +22,7 @@ def count_time(func):
 
     def _deco(data, reverse=False, print_step=False):
         """
+        计算函数执行时间，输出
 
         Args:
             data (List[int]): 待排列表

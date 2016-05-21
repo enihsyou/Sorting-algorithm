@@ -25,7 +25,7 @@ def insertion_sort(data, reverse=False):
         reverse (bool): 是否从小到大排序 (default: False，即从大到小排序)
 
     Returns:
-        List[int]: 有序列表
+        data (List[int]): 有序列表
     """
     length = len(data)  # 输入元素个数
 
@@ -128,6 +128,9 @@ def insertion_sort_r_debug(data, reverse=False, print_step=False):
         data (List[int]): 输入的数据，得是非空列表
         reverse (bool): 是否从小到大排序 (default: False，即从大到小排序)
         print_step (bool): 是否打印每步过程 (default: False)
+
+    Returns:
+        result (List[int]): 有序列表
     """
     length = len(data)  # 输入元素个数
     steps = 0  # 记录操作步数

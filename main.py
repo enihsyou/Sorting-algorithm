@@ -74,6 +74,7 @@ if __name__ == '__main__':
     def test_algo(choice):
         """
         测试所有排序算法
+
         Args:
             choice (str[int]): 选择的第几项
         """
