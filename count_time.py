@@ -20,9 +20,19 @@ def count_time(func):
         function: 返回
     """
 
-    def _deco(data, reverse=False):
+    def _deco(data, reverse=False, print_step=False):
+        """
+
+        Args:
+            data (List[int]): 待排列表
+            reverse (bool): 是否从大到小 (default: False)
+            print_step (bool) : 被装饰函数的参数 (default: False)
+
+        Returns:
+            result (list[int]): 有序列表
+        """
         start_time = time.perf_counter()
-        result = func(data, reverse)
+        result = func(data, reverse, print_step)
         end_time = time.perf_counter()
         print("执行时间:", (end_time - start_time))
         return result
