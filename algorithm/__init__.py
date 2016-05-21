@@ -9,5 +9,6 @@ By: enihsyou
 """
 import algorithm.bubble_sort
 import algorithm.insertion_sort
+import algorithm.selection_sort
 
-__all__ = ['bubble_sort', 'insertion_sort']
+__all__ = ['bubble_sort', 'insertion_sort', 'selection_sort']
