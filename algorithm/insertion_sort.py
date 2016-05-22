@@ -40,7 +40,9 @@ def insertion_sort(data, reverse=False):
             "从小到大 如果待排元素大于有序列表中的当前元素 找到该插入的位置"
             while data[j] > now_num and j < i:
                 j += 1
+        if j == i: continue  # 如果当前位正确 不必交换
         data = data[:j] + [now_num] + data[j:i] + data[i + 1:]
+
     return data
 
 
@@ -76,12 +78,16 @@ def insertion_sort_debug(data, reverse=False, print_step=False):
             while data[j] > now_num and j < i:
                 steps += 1
                 j += 1
+
+        if j == i: continue  # 如果当前位正确 不必交换
         swaps += 1
         data = data[:j] + [now_num] + data[j:i] + data[i + 1:]
         if print_step: print(data)
+
     print("输入数据长度:", length,
           "执行步数:", steps,
           "操作次数:", swaps)
+
     return data
 
 
@@ -115,6 +121,7 @@ def insertion_sort_r(data, reverse=False):
             return last[:i] + [data[0]] + last[i:]
         elif reverse:
             return last[:i] + [data[0]] + last[i:]
+
     return last + [data[0]]  # 如果首元素大于整个列表
 
 
@@ -178,9 +185,11 @@ def insertion_sort_r_debug(data, reverse=False, print_step=False):
         return last + [_data[0]]  # 如果首元素大于整个列表
 
     result = _insertion_sort(data, reverse, print_step)  # 执行排序
+
     print("输入数据长度:", length,
           "执行步数:", steps,
           "操作次数:", swaps)
+
     return result
 
 
@@ -202,4 +211,4 @@ if __name__ == '__main__':
     print("插入排序法::输入数组进行测试")
     while True:
         inp = input()
-        print(eval(inp))
+        print(insertion_sort_debug(eval(inp), True))
