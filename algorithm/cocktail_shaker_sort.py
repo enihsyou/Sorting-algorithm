@@ -2,7 +2,7 @@
 """
 File name: cocktail_shaker_sort
 Reference: https://en.wikipedia.org/wiki/Cocktail_shaker_sort
-Introduction: 鸡尾酒排序，改进一下的包泡排序
+Introduction: 鸡尾酒排序 O(n^2)
 Time: 2016-05-22
 Last modified: 2016-05-22
 By: enihsyou
@@ -129,10 +129,6 @@ def cocktail_shaker_sort_debug(data, reverse=False, print_step=False):
     return data
 
 
-"""
-Test Part
-=========
-"""
 # 调用测试
 # print(cocktail_shaker_sort([3, 5, 4, 8, 2, 7, 6, 0, 9, 1]))
 # print(cocktail_shaker_sort([3, 5, 4, 8, 2, 7, 6, 0, 9, 1], True))

@@ -82,10 +82,6 @@ def bubble_sort_debug(data, reverse=False, print_step=False):
     return data
 
 
-"""
-Test Part
-=========
-"""
 # 调用测试
 # print(bubble_sort([4, 7, 6, 5, 3, 2, 1]))
 # print(bubble_sort([4, 7, 6, 5, 3, 2, 1], reverse=True))

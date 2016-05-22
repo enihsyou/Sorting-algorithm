@@ -4,15 +4,10 @@ File name: insertion_sort
 Reference: https://en.wikipedia.org/wiki/Insertion_sort
 Introduction: 插入排序 O(n^2)
 Time: 2016-05-21
-Last modified: 2016-05-21
+Last modified: 2016-05-22
 By: enihsyou
 """
 from count_time import count_time
-
-"""
-循环法
-=====
-"""
 
 
 def insertion_sort(data, reverse=False):
@@ -33,11 +28,11 @@ def insertion_sort(data, reverse=False):
         now_num = data[i]
         j = 0  # while循环的指针
         if reverse:
-            "从大到小 如果待排元素大于有序列表中的当前元素 找到该插入的位置"
+            # 从大到小 如果待排元素大于有序列表中的当前元素 找到该插入的位置
             while data[j] < now_num and j < i:
                 j += 1
         else:
-            "从小到大 如果待排元素大于有序列表中的当前元素 找到该插入的位置"
+            # 从小到大 如果待排元素大于有序列表中的当前元素 找到该插入的位置
             while data[j] > now_num and j < i:
                 j += 1
         if j == i: continue  # 如果当前位正确 不必交换
@@ -69,12 +64,12 @@ def insertion_sort_debug(data, reverse=False, print_step=False):
         now_num = data[i]
         j = 0  # while循环的指针
         if reverse:
-            "从大到小 如果待排元素大于有序列表中的当前元素 找到该插入的位置"
+            # 从大到小 如果待排元素大于有序列表中的当前元素 找到该插入的位置
             while data[j] < now_num and j < i:
                 steps += 1
                 j += 1
         else:
-            "从小到大 如果待排元素大于有序列表中的当前元素 找到该插入的位置"
+            # 从小到大 如果待排元素大于有序列表中的当前元素 找到该插入的位置
             while data[j] > now_num and j < i:
                 steps += 1
                 j += 1
@@ -89,12 +84,6 @@ def insertion_sort_debug(data, reverse=False, print_step=False):
           "操作次数:", swaps)
 
     return data
-
-
-"""
-递归法
-=====
-"""
 
 
 def insertion_sort_r(data, reverse=False):
@@ -116,7 +105,8 @@ def insertion_sort_r(data, reverse=False):
     last = insertion_sort(data[1:], reverse)  # 递归处理 从第二个元素开始
     last_len = len(last)  # 递归结果的元素个数
     for i in range(last_len):  # 在递归结果(有序列表)中插入
-        if data[0] > last[i]:  # 从大到小 如果待排元素大于有序列表中的当前元素 插入返回
+        # 从大到小 如果待排元素大于有序列表中的当前元素 插入返回
+        if data[0] > last[i]:
             if reverse: continue
             return last[:i] + [data[0]] + last[i:]
         elif reverse:
@@ -164,7 +154,8 @@ def insertion_sort_r_debug(data, reverse=False, print_step=False):
         last_len = len(last)  # 递归结果的元素个数
         for i in range(last_len):  # 在递归结果(有序列表)中插入
             steps += 1
-            if _data[0] > last[i]:  # 从大到小 如果待排元素大于有序列表中的当前元素 插入返回
+            # 从大到小 如果待排元素大于有序列表中的当前元素 插入返回
+            if _data[0] > last[i]:
                 if _reverse: continue
                 swaps += 1
                 if _print_step:
@@ -193,10 +184,6 @@ def insertion_sort_r_debug(data, reverse=False, print_step=False):
     return result
 
 
-"""
-Test Part
-=========
-"""
 # 调用测试
 # print(insertion_sort([3, 5, 4, 8, 2, 7, 6, 0, 9, 1]))
 # print(insertion_sort([3, 5, 4, 8, 2, 7, 6, 0, 9, 1], True))

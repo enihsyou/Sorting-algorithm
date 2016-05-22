@@ -4,7 +4,7 @@ File name: selection_sort
 Reference: https://en.wikipedia.org/wiki/Selection_sort
 Introduction: 选择排序 O(n^2)
 Time: 2016-05-21
-Last modified: 2016-05-21
+Last modified: 2016-05-22
 By: enihsyou
 """
 from count_time import count_time
@@ -33,7 +33,7 @@ def selection_sort(data, reverse=False):
             elif reverse:
                 index = j
 
-        """进行交换"""
+        "进行交换"
         if index == i: continue  # 如果当前位正确 不必交换
         tmp = data[index]
         data[index] = data[i]
@@ -71,13 +71,14 @@ def selection_sort_debug(data, reverse=False, print_step=False):
             elif reverse:
                 index = j
 
-        """进行交换"""
+        "进行交换"
         if index == i: continue  # 如果当前位正确 不必交换
         tmp = data[index]
         data[index] = data[i]
         data[i] = tmp
         swaps += 1
         if print_step: print(data)
+
     print("输入数据长度:", length,
           "执行步数:", steps,
           "操作次数:", swaps)
@@ -85,10 +86,6 @@ def selection_sort_debug(data, reverse=False, print_step=False):
     return data
 
 
-"""
-Test Part
-=========
-"""
 # 调用测试
 # print(selection_sort([3, 5, 4, 8, 2, 7, 6, 0, 9, 1]))
 # print(selection_sort([3, 5, 4, 8, 2, 7, 6, 0, 9, 1], True))
