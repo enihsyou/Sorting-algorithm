@@ -100,4 +100,4 @@ if __name__ == '__main__':
     print("冒泡排序法::输入数组进行测试")
     while True:
         inp = input()
-        print(eval(inp))
+        print(bubble_sort_debug(eval(inp), True))
