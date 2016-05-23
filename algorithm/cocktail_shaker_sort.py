@@ -1,27 +1,27 @@
 # -*- coding: utf-8 -*-
-"""
+"""Cocktail shaker sort
+
 File name: cocktail_shaker_sort
 Reference: https://en.wikipedia.org/wiki/Cocktail_shaker_sort
 Introduction: 鸡尾酒排序 O(n^2)
 Time: 2016-05-22
-Last modified: 2016-05-22
+Last modified: 2016-05-23
 By: enihsyou
 """
 from count_time import count_time
 
 
 def cocktail_shaker_sort(data, reverse=False):
-    """
-    Cocktail shaker sort
+    """Cocktail shaker sort
 
-    鸡尾酒排序法，从左到右 从右到左循环，是冒泡排序的改进版
-    使用``swapped``判断是否已经有序 提前结束
+    Use ``swapped`` to end if necessary.
+
     Args:
-        data (List[int]): 输入的数据，得是非空列表
-        reverse (bool): 是否从小到大排序 (default: False，即从大到小排序)
+        data (List[int]): list to sort, need a not None list
+        reverse (bool): whether to sort descending (default: False)
 
     Returns:
-        List[int]: 排序好的数据
+        List[int]: ordered list
     """
     length = len(data)
 
@@ -63,18 +63,17 @@ def cocktail_shaker_sort(data, reverse=False):
 
 @count_time
 def cocktail_shaker_sort_debug(data, reverse=False, print_step=False):
-    """
-    Cocktail shaker sort ver.debug
+    """Cocktail shaker sort ver.debug
 
-    鸡尾酒排序法，从左到右 从右到左循环，是冒泡排序的改进版
-    使用``swapped``判断是否已经有序 提前结束
+    Use ``swapped`` to end if necessary.
+
     Args:
-        data (List[int]): 输入的数据，得是非空列表
-        reverse (bool): 是否从小到大排序 (default: False，即从大到小排序)
-        print_step (bool): 是否打印每步过程 (default: False)
+        data (List[int]): list to sort, need a not None list
+        reverse (bool): whether to sort descending (default: False)
+        print_step (bool) : whether to show sorting steps (default: False)
 
     Returns:
-        List[int]: 排序好的数据
+        List[int]: ordered list
     """
     length = len(data)
 
@@ -128,6 +127,10 @@ def cocktail_shaker_sort_debug(data, reverse=False, print_step=False):
 
     return data
 
+
+#############
+# Test Part #
+#############
 
 # 调用测试
 # print(cocktail_shaker_sort([3, 5, 4, 8, 2, 7, 6, 0, 9, 1]))

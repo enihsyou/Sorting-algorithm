@@ -1,27 +1,28 @@
 # -*- coding: utf-8 -*-
-"""
+"""Bubble sort
+
 File name: bubble_sort
 Reference: https://en.wikipedia.org/wiki/Bubble_sort
 Introduction: 冒泡排序 O(n^2)
 Time: 2016-05-15
-Last modified: 2016-05-21
+Last modified: 2016-05-23
 By: enihsyou
 """
 from count_time import count_time
 
 
 def bubble_sort(data, reverse=False):
-    """
-    Bubble sort
+    """Bubble sort
 
     输入一组数据 默认从大到小排序
     第一次就想出来的方式
+
     Args:
-        data (list[int]): 输入的数据，得是非空列表
-        reverse (bool): 是否从小到大排序 (default: False，即从大到小排序)
+        data (List[int]): list to sort, need a not None list
+        reverse (bool): whether to sort descending (default: False)
 
     Returns:
-        data (list[int]): 排序好的数据
+        List[int]: ordered list
     """
     length = len(data)
 
@@ -42,18 +43,18 @@ def bubble_sort(data, reverse=False):
 
 @count_time
 def bubble_sort_debug(data, reverse=False, print_step=False):
-    """
-    Bubble sort ver.debug
+    """Bubble sort ver.debug
 
     输入一组数据 默认从大到小排序
     会输出每次的操作和进行的步数以及函数执行时间
+
     Args:
-        data (list[int]): 输入的数据，得是非空列表
-        reverse (bool): 是否从小到大排序 (default: False，即从大到小排序)
-        print_step (bool): 是否打印每步过程 (default: False)
+        data (List[int]): list to sort, need a not None list
+        reverse (bool): whether to sort descending (default: False)
+        print_step (bool) : whether to show sorting steps (default: False)
 
     Returns:
-        data (list[int]): 排序好的数据
+        List[int]: ordered list
     """
     length = len(data)
 
@@ -81,6 +82,10 @@ def bubble_sort_debug(data, reverse=False, print_step=False):
           "操作次数:", swaps)
     return data
 
+
+#############
+# Test Part #
+#############
 
 # 调用测试
 # print(bubble_sort([4, 7, 6, 5, 3, 2, 1]))

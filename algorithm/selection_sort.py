@@ -1,26 +1,27 @@
 # -*- coding: utf-8 -*-
-"""
+"""Selection sort
+
 File name: selection_sort
 Reference: https://en.wikipedia.org/wiki/Selection_sort
 Introduction: 选择排序 O(n^2)
 Time: 2016-05-21
-Last modified: 2016-05-22
+Last modified: 2016-05-23
 By: enihsyou
 """
 from count_time import count_time
 
 
 def selection_sort(data, reverse=False):
-    """
-    Selection sort
+    """Selection sort
 
     看上去很简单
+
     Args:
-        data (List[int]): 输入的数据，非空列表
-        reverse (bool): 是否从小到大排序 (default: False，即从大到小排序)
+        data (List[int]): list to sort, need a not None list
+        reverse (bool): whether to sort descending (default: False)
 
     Returns:
-        data (List[int]): 有序列表
+        List[int]: ordered list
     """
     length = len(data)
 
@@ -44,17 +45,17 @@ def selection_sort(data, reverse=False):
 
 @count_time
 def selection_sort_debug(data, reverse=False, print_step=False):
-    """
-    Selection sort ver.debug
+    """Selection sort ver.debug
 
     看上去很简单
+
     Args:
-        data (List[int]): 输入的数据，非空列表
-        reverse (bool): 是否从小到大排序 (default: False，即从大到小排序)
-        print_step (bool): 是否打印每步过程 (default: False)
+        data (List[int]): list to sort, need a not None list
+        reverse (bool): whether to sort descending (default: False)
+        print_step (bool) : whether to show sorting steps (default: False)
 
     Returns:
-        data (List[int]): 有序列表
+        List[int]: ordered list
     """
     length = len(data)
 
@@ -71,7 +72,7 @@ def selection_sort_debug(data, reverse=False, print_step=False):
             elif reverse:
                 index = j
 
-        "进行交换"
+        # make swaps
         if index == i: continue  # 如果当前位正确 不必交换
         tmp = data[index]
         data[index] = data[i]
@@ -85,6 +86,10 @@ def selection_sort_debug(data, reverse=False, print_step=False):
 
     return data
 
+
+#############
+# Test Part #
+#############
 
 # 调用测试
 # print(selection_sort([3, 5, 4, 8, 2, 7, 6, 0, 9, 1]))

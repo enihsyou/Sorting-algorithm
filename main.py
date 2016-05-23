@@ -1,12 +1,11 @@
 # -*- coding: utf-8 -*-
-"""
-生成随机列表，测试排序算法效率
+"""Count algorithms' efficiency.
 
 File name: main
-Reference: 
-Introduction: 使用随机函数生成随机列表，调用排序算法多次测试 统计时间效率
+Reference:
+Introduction: Use random generate_function to count efficiency of algorithms.
 Time: 2016-05-20
-Last modified: 2016-05-21
+Last modified: 2016-05-23
 By: enihsyou
 """
 
@@ -16,15 +15,15 @@ import algorithm
 
 
 def generate_list(number, unique=True):
-    """
-    返回一个由随机数组成的列表
+    """Make list with random integers.
 
-    列表元素个数由``number``指定，数值范围在[0, ``number``)。
+    ``number`` defined how many items in the list,
+    all the number in is interval [0, ``number``).
     Args:
-        number (int): 列表元素个数
-        unique (bool): 数字是否唯一 (default: True)
+        number (int): how many items in the list
+        unique (bool): whether to ust unique number (default: True)
     Returns:
-        (list[int]): 随机数列表
+        (list[int]): random list
 
     """
     if unique:
@@ -34,15 +33,17 @@ def generate_list(number, unique=True):
 
 
 def judge(random_list, debug=False, steps=False):
-    """
-    执行测试
+    """Run the test.
 
+    Have two ways, one is just run with some useful information printed,
+    the other is debug mode, running with wraps.
     Args:
-        random_list (list[int]): 被排序的列表
-        debug (bool): 是否启用debug模式 (default: False)
-        steps (bool): 是否显示每步 (default: False)
+        random_list (list[int]): list to sort
+        debug (bool): whether to use debug mode,
+                      for showing running time (default: False)
+        steps (bool): whether to show steps   (default: False)
     Returns:
-        (list[int[): 有序列表
+        (list[int[): ordered list
     """
     for algo in algorithm.__all__:
         if debug:
@@ -55,10 +56,42 @@ def judge(random_list, debug=False, steps=False):
                                         command(random_list[:])))
 
 
+def test_algo(choice):
+    """Test all the algorithms.
+
+    For choice ``1``: just print generated random integer list.
+    For choice ``2``: test all algorithms with same list, ordered list printed.
+    For choice ``3``: use debug mode to print calculate time.
+    For choice ``4``: not only calculate running time, also show steps.
+
+    Args:
+        choice (str[int]): choice number
+    """
+    while True:
+        inp = input("数组大小: ")
+        try:
+            inp = int(inp)  # 转换成整数
+            ranlist = generate_list(inp)
+        except ValueError:  # 如果输入的不是整数 跳过
+            main()
+            break
+        if choice == '1':
+            print("待排列表: \n{}\n".format(ranlist))
+            continue
+        else:
+            print("待排列表: \n{}\n".format(ranlist))
+        if choice == '2':
+            judge(ranlist)
+        elif choice == '3':
+            # print("有序列表: \n", judge(ranlist, debug=True))
+            judge(ranlist, debug=True)
+        elif choice == '4':
+            # print("有序列表: \n", judge(ranlist, debug=True, steps=True))
+            judge(ranlist, debug=True, steps=True)
+
+
 def main():
-    """
-    测试用的主函数
-    """
+    """Main function for testing"""
     print("1: 测试随机数列表生成器\n"
           "2: 测试所有排序算法\n"
           "3: 测试所有排序算法 (debug)\n"
@@ -72,34 +105,4 @@ def main():
 
 
 if __name__ == '__main__':
-    def test_algo(choice):
-        """
-        测试所有排序算法
-
-        Args:
-            choice (str[int]): 选择的第几项
-        """
-        while True:
-            inp = input("数组大小: ")
-            try:
-                inp = int(inp)  # 转换成整数
-                ranlist = generate_list(inp)
-            except ValueError:  # 如果输入的不是整数 跳过
-                main()
-                break
-            if choice == '1':
-                print("待排列表: \n{}\n".format(ranlist))
-                continue
-            else:
-                print("待排列表: \n{}\n".format(ranlist))
-            if choice == '2':
-                judge(ranlist)
-            elif choice == '3':
-                # print("有序列表: \n", judge(ranlist, debug=True))
-                judge(ranlist, debug=True)
-            elif choice == '4':
-                # print("有序列表: \n", judge(ranlist, debug=True, steps=True))
-                judge(ranlist, debug=True, steps=True)
-
-
     main()

@@ -1,26 +1,27 @@
 # -*- coding: utf-8 -*-
-"""
+"""Insertion sort
+
 File name: insertion_sort
 Reference: https://en.wikipedia.org/wiki/Insertion_sort
 Introduction: 插入排序 O(n^2)
 Time: 2016-05-21
-Last modified: 2016-05-22
+Last modified: 2016-05-23
 By: enihsyou
 """
 from count_time import count_time
 
 
 def insertion_sort(data, reverse=False):
-    """
-    Insertion sort
+    """Insertion sort
 
     采用了非递归的方式，改用循环
+
     Args:
-        data (List[int]): 输入的数据，得是非空列表
-        reverse (bool): 是否从小到大排序 (default: False，即从大到小排序)
+        data (List[int]): list to sort, need a not None list
+        reverse (bool): whether to sort descending (default: False)
 
     Returns:
-        data (List[int]): 有序列表
+        List[int]: ordered list
     """
     length = len(data)  # 输入元素个数
 
@@ -43,17 +44,17 @@ def insertion_sort(data, reverse=False):
 
 @count_time
 def insertion_sort_debug(data, reverse=False, print_step=False):
-    """
-    Insertion sort ver.debug
+    """Insertion sort ver.debug
 
     采用了非递归的方式，改用循环
+
     Args:
-        data (List[int]): 输入的数据，得是非空列表
-        reverse (bool): 是否从小到大排序 (default: False，即从大到小排序)
-        print_step (bool): 是否打印每步过程 (default: False)
+        data (List[int]): list to sort, need a not None list
+        reverse (bool): whether to sort descending (default: False)
+        print_step (bool) : whether to show sorting steps (default: False)
 
     Returns:
-        data (List[int]): 有序列表
+        List[int]: ordered list
     """
     length = len(data)  # 输入元素个数
 
@@ -87,16 +88,16 @@ def insertion_sort_debug(data, reverse=False, print_step=False):
 
 
 def insertion_sort_r(data, reverse=False):
-    """
-    Insertion sort ver.recursive
+    """Insertion sort ver.recursive
 
     简单的实现，使用了递归的方式，可能无法处理特别大的列表
+
     Args:
-        data (List[int]): 输入的数据，得是非空列表
-        reverse (bool): 是否从小到大排序 (default: False，即从大到小排序)
+        data (List[int]): list to sort, need a not None list
+        reverse (bool): whether to sort descending (default: False)
 
     Returns:
-        List[int]: 元素插入以后的列表
+        List[int]: ordered list
     """
     length = len(data)  # 输入元素个数
 
@@ -117,25 +118,25 @@ def insertion_sort_r(data, reverse=False):
 
 @count_time
 def insertion_sort_r_debug(data, reverse=False, print_step=False):
-    """
-    Insertion sort ver.recursive_debug
+    """Insertion sort ver.recursive_debug
 
     简单的实现，使用了递归的方式，可能无法处理特别大的列表
+
     Args:
-        data (List[int]): 输入的数据，得是非空列表
-        reverse (bool): 是否从小到大排序 (default: False，即从大到小排序)
-        print_step (bool): 是否打印每步过程 (default: False)
+        data (List[int]): list to sort, need a not None list
+        reverse (bool): whether to sort descending (default: False)
+        print_step (bool) : whether to show sorting steps (default: False)
 
     Returns:
-        result (List[int]): 有序列表
+        List[int]: ordered list
     """
     length = len(data)  # 输入元素个数
     steps = 0  # 记录操作步数
     swaps = 0  # 记录交换次数
 
     def _insertion_sort(_data, _reverse=False, _print_step=False):
-        """
-        内部函数 排序的主程序
+        """Inner function, doing the sort job.
+
         Args:
             _data (List[int]): 输入的数据，得是非空列表
             _reverse (bool): 是否从小到大排序 (default: False，即从大到小排序)
@@ -183,6 +184,10 @@ def insertion_sort_r_debug(data, reverse=False, print_step=False):
 
     return result
 
+
+#############
+# Test Part #
+#############
 
 # 调用测试
 # print(insertion_sort([3, 5, 4, 8, 2, 7, 6, 0, 9, 1]))
