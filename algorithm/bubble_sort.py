@@ -4,9 +4,9 @@
 File name: bubble_sort
 Reference: https://en.wikipedia.org/wiki/Bubble_sort
 Introduction: 冒泡排序 O(n^2)
-Time: 2016-05-15
+Date: 2016-05-15
 Last modified: 2016-05-23
-By: enihsyou
+Author: enihsyou
 """
 from count_time import count_time
 

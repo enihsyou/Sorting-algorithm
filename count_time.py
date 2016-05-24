@@ -4,9 +4,9 @@
 File name: count_time
 Reference: http://www.cnblogs.com/rhcad/archive/2011/12/21/2295507.html
 Introduction: Make it a decorator, print running time.
-Time: 2016-05-16
+Date: 2016-05-16
 Last modified: 2016-05-23
-By: enihsyou
+Author: enihsyou
 """
 import time
 from functools import wraps

@@ -4,9 +4,9 @@
 File name: cocktail_shaker_sort
 Reference: https://en.wikipedia.org/wiki/Cocktail_shaker_sort
 Introduction: 鸡尾酒排序 O(n^2)
-Time: 2016-05-22
+Date: 2016-05-22
 Last modified: 2016-05-23
-By: enihsyou
+Author: enihsyou
 """
 from count_time import count_time
 

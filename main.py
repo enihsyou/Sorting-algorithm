@@ -4,9 +4,9 @@
 File name: main
 Reference:
 Introduction: Use random generate_function to count efficiency of algorithms.
-Time: 2016-05-20
+Date: 2016-05-20
 Last modified: 2016-05-23
-By: enihsyou
+Author: enihsyou
 """
 
 import random

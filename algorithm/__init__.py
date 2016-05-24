@@ -3,9 +3,9 @@
 File name: __init__
 Reference:
 Introduction:
-Time: 2016-05-20
+Date: 2016-05-20
 Last modified: 2016-05-22
-By: enihsyou
+Author: enihsyou
 """
 import algorithm.bubble_sort
 import algorithm.cocktail_shaker_sort

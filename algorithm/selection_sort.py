@@ -4,9 +4,9 @@
 File name: selection_sort
 Reference: https://en.wikipedia.org/wiki/Selection_sort
 Introduction: 选择排序 O(n^2)
-Time: 2016-05-21
+Date: 2016-05-21
 Last modified: 2016-05-23
-By: enihsyou
+Author: enihsyou
 """
 from count_time import count_time
 
