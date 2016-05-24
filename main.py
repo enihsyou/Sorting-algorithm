@@ -24,12 +24,21 @@ def generate_list(number, unique=True):
         unique (bool): whether to ust unique number (default: True)
     Returns:
         (list[int]): random list
-
+    Raises:
+        EXCEPTION (ValueError): we need a Integer greater than 0
     """
     if unique:
-        return random.sample(range(number), number)
+        try:
+            return random.sample(range(number), number)
+        except ValueError as EXCEPTION:
+            print("需要一个非负数！")
+            raise EXCEPTION
     else:
-        return [random.randrange(number) for _ in range(number)]
+        try:
+            return [random.randrange(number) for _ in range(number)]
+        except ValueError as EXCEPTION:
+            print("需要一个非负数！")
+            raise EXCEPTION
 
 
 def judge(random_list, debug=False, steps=False):
@@ -65,44 +74,61 @@ def test_algo(choice):
     For choice ``4``: not only calculate running time, also show steps.
 
     Args:
-        choice (str[int]): choice number
+        choice (int): number chose
     """
     while True:
         inp = input("数组大小: ")
+
         try:
             inp = int(inp)  # 转换成整数
             ranlist = generate_list(inp)
         except ValueError:  # 如果输入的不是整数 跳过
-            main()
+            if inp != 'q': main()
             break
-        if choice == '1':
+
+        if choice == 1:
             print("待排列表: \n{}\n".format(ranlist))
             continue
         else:
             print("待排列表: \n{}\n".format(ranlist))
-        if choice == '2':
+        if choice == 2:
             judge(ranlist)
-        elif choice == '3':
+        elif choice == 3:
             # print("有序列表: \n", judge(ranlist, debug=True))
             judge(ranlist, debug=True)
-        elif choice == '4':
+        elif choice == 4:
             # print("有序列表: \n", judge(ranlist, debug=True, steps=True))
             judge(ranlist, debug=True, steps=True)
 
 
-def main():
-    """Main function for testing"""
+def main(user_choice=None):
+    """Main function for testing
+
+    Args:
+        user_choice (int): predefined choice number
+    Returns:
+        None: quit if ``q`` is typed
+    Raises:
+        ValueError: undefined input
+    """
     print("1: 测试随机数列表生成器\n"
           "2: 测试所有排序算法\n"
           "3: 测试所有排序算法 (debug)\n"
-          "4: 测试所有排序算法 (steps)\n")
+          "4: 测试所有排序算法 (steps)\n"
+          "q: 输入'q'结束\n")
 
-    user_choice = input(">>> ")
+    if not user_choice:
+        user_choice = input(">>> ")
+    if user_choice == 'q': return None
+
     try:
-        test_algo(user_choice)
+        user_choice = int(user_choice)
+        if not 0 < user_choice < 5: raise ValueError
     except ValueError:
-        print("错误的输入")
+        print("错误的输入\n")
+        main()
+    test_algo(user_choice)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

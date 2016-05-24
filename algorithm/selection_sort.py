@@ -101,7 +101,7 @@ def selection_sort_debug(data, reverse=False, print_step=False):
 # selection_sort_debug([3, 5, 4, 8, 2, 7, 6, 0, 9, 1], print_step=True)
 # selection_sort_debug([3, 5, 4, 8, 2, 7, 6, 0, 9, 1], True, print_step=True)
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     print("选择排序法::输入数组进行测试")
     while True:
         inp = input()

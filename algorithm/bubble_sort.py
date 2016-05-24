@@ -97,7 +97,7 @@ def bubble_sort_debug(data, reverse=False, print_step=False):
 # bubble_sort_debug([4, 7, 6, 5, 3, 2, 1], print_step=True)
 # bubble_sort_debug([4, 7, 6, 5, 3, 2, 1], reverse=True, print_step=True)
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     print("冒泡排序法::输入数组进行测试")
     while True:
         inp = input()
