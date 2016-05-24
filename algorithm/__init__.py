@@ -9,8 +9,9 @@ Author: enihsyou
 """
 import algorithm.bubble_sort
 import algorithm.cocktail_shaker_sort
+import algorithm.heap_sort
 import algorithm.insertion_sort
 import algorithm.selection_sort
 
 __all__ = ['bubble_sort', 'insertion_sort', 'selection_sort',
-           'cocktail_shaker_sort']
+           'cocktail_shaker_sort', 'heap_sort']
