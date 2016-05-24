@@ -5,7 +5,7 @@ File name: main
 Reference:
 Introduction: Use random generate_function to count efficiency of algorithms.
 Date: 2016-05-20
-Last modified: 2016-05-23
+Last modified: 2016-05-24
 Author: enihsyou
 """
 
@@ -41,7 +41,7 @@ def generate_list(number, unique=True):
             raise EXCEPTION
 
 
-def judge(random_list, debug=False, steps=False):
+def judge(random_list, debug=False, steps=False, func=None):
     """Run the test.
 
     Have two ways, one is just run with some useful information printed,
@@ -51,9 +51,20 @@ def judge(random_list, debug=False, steps=False):
         debug (bool): whether to use debug mode,
                       for showing running time (default: False)
         steps (bool): whether to show steps   (default: False)
+        func (function): specific function to use
     Returns:
         (list[int[): ordered list
     """
+    if func:
+        try:
+            func = getattr(getattr(algorithm, func), func + '_debug')
+        except AttributeError:
+            print("输入的名字不存在！")
+            func2 = input("输入名称: ")
+            judge(random_list, debug, steps, func2)
+            return
+        func(random_list[:], False, steps)  # False:从大到小
+        return
     for algo in algorithm.__all__:
         if debug:
             command = getattr(getattr(algorithm, algo), algo + '_debug')
@@ -88,15 +99,18 @@ def test_algo(choice):
 
         if choice == 1:
             print("待排列表: \n{}\n".format(ranlist))
-            continue
-        else:
-            print("待排列表: \n{}\n".format(ranlist))
-        if choice == 2:
+            # continue
+        # else:
+        #     print("待排列表: \n{}\n".format(ranlist))
+        elif choice == 2:
             judge(ranlist)
         elif choice == 3:
+            algo = input("输入名称: ")
+            judge(ranlist, True, False, algo)
+        elif choice == 4:
             # print("有序列表: \n", judge(ranlist, debug=True))
             judge(ranlist, debug=True)
-        elif choice == 4:
+        elif choice == 5:
             # print("有序列表: \n", judge(ranlist, debug=True, steps=True))
             judge(ranlist, debug=True, steps=True)
 
@@ -113,8 +127,9 @@ def main(user_choice=None):
     """
     print("1: 测试随机数列表生成器\n"
           "2: 测试所有排序算法\n"
-          "3: 测试所有排序算法 (debug)\n"
-          "4: 测试所有排序算法 (steps)\n"
+          "3: 测试特定排序算法\n"
+          "4: 测试所有排序算法 (debug)\n"
+          "5: 测试所有排序算法 (steps)\n"
           "q: 输入'q'结束\n")
 
     if not user_choice:
