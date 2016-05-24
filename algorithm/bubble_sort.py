@@ -5,7 +5,7 @@ File name: bubble_sort
 Reference: https://en.wikipedia.org/wiki/Bubble_sort
 Introduction: 冒泡排序 O(n^2)
 Date: 2016-05-15
-Last modified: 2016-05-23
+Last modified: 2016-05-24
 Author: enihsyou
 """
 from count_time import count_time
@@ -30,13 +30,9 @@ def bubble_sort(data, reverse=False):
         for j in range(i + 1, length):  # 从i + 1开始 减少循环次数
             if data[i] < data[j]:  # 从大到小 如果反了交换
                 if reverse: continue
-                tmp = data[j]
-                data[j] = data[i]
-                data[i] = tmp
+                data[i], data[j] = data[j], data[i]
             elif reverse:  # 如果数据从小到大
-                tmp = data[j]
-                data[j] = data[i]
-                data[i] = tmp
+                data[i], data[j] = data[j], data[i]
 
     return data
 
@@ -65,15 +61,11 @@ def bubble_sort_debug(data, reverse=False, print_step=False):
         for j in range(i + 1, length):  # 从i + 1开始 减少循环次数
             if data[i] < data[j]:  # 从大到小 如果反了交换
                 if reverse: continue
-                tmp = data[j]
-                data[j] = data[i]
-                data[i] = tmp
+                data[i], data[j] = data[j], data[i]
                 swaps += 1
 
             elif reverse:  # 如果数据从小到大
-                tmp = data[j]
-                data[j] = data[i]
-                data[i] = tmp
+                data[i], data[j] = data[j], data[i]
                 swaps += 1
             if print_step: print(data)  # 打印每步操作之后结果
             steps += 1
