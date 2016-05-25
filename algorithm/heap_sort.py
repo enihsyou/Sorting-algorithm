@@ -5,7 +5,7 @@ File name: heap_sort
 Reference: https://en.wikipedia.org/wiki/Heapsort
 Introduction: 堆排序 O(n*Log(n))
 Date: 2016-05-22
-Last modified: 2016-05-24
+Last modified: 2016-05-25
 Author: enihsyou
 """
 from count_time import count_time
@@ -164,7 +164,7 @@ def heap_sort_debug(data, reverse=False, print_step=False):
 # print(heap_sort([3, 5, 4, 8, 2, 7, 6, 0, 9, 1]))
 # print(heap_sort([3, 5, 4, 8, 2, 7, 6, 0, 9, 1], True))
 # 计时测试
-heap_sort_debug([3, 5, 4, 8, 2, 7, 6, 0, 9, 1])
+# heap_sort_debug([3, 5, 4, 8, 2, 7, 6, 0, 9, 1])
 # heap_sort_debug([3, 5, 4, 8, 2, 7, 6, 0, 9, 1], True)
 # 步骤测试
 # heap_sort_debug([3, 5, 4, 8, 2, 7, 6, 0, 9, 1], print_step=True)
