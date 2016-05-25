@@ -92,7 +92,8 @@ def heap_sort_debug(data, reverse=False, print_step=False):
     """
     length = len(data)
 
-    steps = 0  # 记录操作步数
+    steps = 0  # 记录比较次数
+    comps = 0  # 记录比较次数
     swaps = 0  # 记录交换次数
 
     def _build_max_heap(_start, _end):
@@ -107,7 +108,7 @@ def heap_sort_debug(data, reverse=False, print_step=False):
         Returns:
             None: 只改变``data``数组
         """
-        nonlocal steps, swaps
+        nonlocal steps, swaps, comps
         root = _start  # 根节点位置
 
         while True:
@@ -118,13 +119,16 @@ def heap_sort_debug(data, reverse=False, print_step=False):
             # 先比较两个子节点，选择更大的一个child
             if child + 1 <= _end:
                 if reverse:  # descending
+                    comps += 1
                     if data[child] < data[child + 1]:
                         child += 1
                 else:  # ascending
+                    comps += 1
                     if data[child] > data[child + 1]:
                         child += 1
             # 如果子节点大于根节点，交换
             if reverse:  # descending
+                comps += 1
                 if data[root] < data[child]:
                     swaps += 1
                     data[root], data[child] = data[child], data[root]
@@ -132,12 +136,14 @@ def heap_sort_debug(data, reverse=False, print_step=False):
                 else:  # 子节点小于根节点，跳出
                     break
             else:  # ascending
+                comps += 1
                 if data[root] > data[child]:
                     swaps += 1
                     data[root], data[child] = data[child], data[root]
                     root = child  # 继续向下
                 else:  # 子节点小于根节点，跳出
                     break
+            if print_step: print(data)
 
     # 创建最大堆
     # (length - 2) // 2: 最后一个父节点，从右向左循环调整成堆结构
@@ -150,8 +156,9 @@ def heap_sort_debug(data, reverse=False, print_step=False):
         data[0], data[end] = data[end], data[0]
         _build_max_heap(0, end - 1)
 
-    print("输入数据长度:", length,
-          "执行步数:", steps,
+    print("输入长度:", length,
+          "循环次数:", steps,
+          "比较次数:", comps,
           "操作次数:", swaps)
 
     return data

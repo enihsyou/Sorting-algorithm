@@ -58,7 +58,8 @@ def insertion_sort_debug(data, reverse=False, print_step=False):
     """
     length = len(data)  # 输入元素个数
 
-    steps = 0  # 记录操作步数
+    steps = 0  # 记录比较次数
+    comps = 0  # 记录比较次数
     swaps = 0  # 记录交换次数
 
     for i in range(1, length):  # 假设第一个元素已经有序
@@ -66,12 +67,16 @@ def insertion_sort_debug(data, reverse=False, print_step=False):
         j = 0  # while循环的指针
         if reverse:
             # 从大到小 如果待排元素大于有序列表中的当前元素 找到该插入的位置
+            comps += 1
             while data[j] < now_num and j < i:
+                comps += 1
                 steps += 1
                 j += 1
         else:
             # 从小到大 如果待排元素大于有序列表中的当前元素 找到该插入的位置
+            comps += 1
             while data[j] > now_num and j < i:
+                comps += 1
                 steps += 1
                 j += 1
 
@@ -80,8 +85,9 @@ def insertion_sort_debug(data, reverse=False, print_step=False):
         data = data[:j] + [now_num] + data[j:i] + data[i + 1:]
         if print_step: print(data)
 
-    print("输入数据长度:", length,
-          "执行步数:", steps,
+    print("输入长度:", length,
+          "循环次数:", steps,
+          "比较次数:", comps,
           "操作次数:", swaps)
 
     return data
@@ -131,7 +137,9 @@ def insertion_sort_r_debug(data, reverse=False, print_step=False):
         List[int]: ordered list
     """
     length = len(data)  # 输入元素个数
-    steps = 0  # 记录操作步数
+
+    steps = 0  # 记录比较次数
+    comps = 0  # 记录比较次数
     swaps = 0  # 记录交换次数
 
     def _insertion_sort(_data, _reverse=False, _print_step=False):
@@ -145,41 +153,46 @@ def insertion_sort_r_debug(data, reverse=False, print_step=False):
         Returns:
             List[int]: 元素插入以后的列表
         """
-        nonlocal steps, swaps
+        nonlocal steps, swaps, comps
         _length = len(_data)  # 输入元素个数
+
         if _length == 1:  # 如果只有一个元素 不必处理
             steps += 1
             return _data
+
         last = _insertion_sort(_data[1:], _reverse,
                                _print_step)  # 递归处理 从第二个元素开始
         last_len = len(last)  # 递归结果的元素个数
+
         for i in range(last_len):  # 在递归结果(有序列表)中插入
             steps += 1
+
             # 从大到小 如果待排元素大于有序列表中的当前元素 插入返回
+            comps += 1
             if _data[0] > last[i]:
                 if _reverse: continue
                 swaps += 1
                 if _print_step:
                     print(data[:length - _length] +
-                          last[:i] + [_data[0]] +
-                          last[i:])
+                          last[:i] + [_data[0]] + last[i:])
+
                 return last[:i] + [_data[0]] + last[i:]
             elif _reverse:
                 swaps += 1
                 if _print_step:
                     print(data[:length - _length] +
-                          last[:i] + [_data[0]] +
-                          last[i:])
+                          last[:i] + [_data[0]] + last[i:])
+
                 return last[:i] + [_data[0]] + last[i:]
         if _print_step:
-            print(data[:length - _length] +
-                  last + [_data[0]])
+            print(data[:length - _length] + last + [_data[0]])
         return last + [_data[0]]  # 如果首元素大于整个列表
 
     result = _insertion_sort(data, reverse, print_step)  # 执行排序
 
-    print("输入数据长度:", length,
-          "执行步数:", steps,
+    print("输入长度:", length,
+          "循环次数:", steps,
+          "比较次数:", comps,
           "操作次数:", swaps)
 
     return result
@@ -195,6 +208,8 @@ def insertion_sort_r_debug(data, reverse=False, print_step=False):
 # 计时测试
 # insertion_sort_debug([3, 5, 4, 8, 2, 7, 6, 0, 9, 1])
 # insertion_sort_debug([3, 5, 4, 8, 2, 7, 6, 0, 9, 1], True)
+# insertion_sort_r_debug([3, 5, 4, 8, 2, 7, 6, 0, 9, 1])
+# insertion_sort_r_debug([3, 5, 4, 8, 2, 7, 6, 0, 9, 1], True)
 # 步骤测试
 # insertion_sort_debug([3, 5, 4, 8, 2, 7, 6, 0, 9, 1], print_step=True)
 # insertion_sort_debug([3, 5, 4, 8, 2, 7, 6, 0, 9, 1], True, print_step=True)

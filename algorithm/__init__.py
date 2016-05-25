@@ -16,3 +16,6 @@ import algorithm.selection_sort
 
 __all__ = ['bubble_sort', 'insertion_sort', 'selection_sort',
            'cocktail_shaker_sort', 'heap_sort', 'merge_sort']
+n2 = ['bubble_sort', 'insertion_sort', 'selection_sort',
+      'cocktail_shaker_sort']
+nlogn = ['heap_sort', 'merge_sort']

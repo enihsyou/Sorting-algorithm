@@ -5,7 +5,7 @@ File name: selection_sort
 Reference: https://en.wikipedia.org/wiki/Selection_sort
 Introduction: 选择排序 O(n^2)
 Date: 2016-05-21
-Last modified: 2016-05-24
+Last modified: 2016-05-25
 Author: enihsyou
 """
 from count_time import count_time
@@ -57,13 +57,15 @@ def selection_sort_debug(data, reverse=False, print_step=False):
     """
     length = len(data)
 
-    steps = 0  # 记录操作步数
+    steps = 0  # 记录比较次数
+    comps = 0  # 记录比较次数
     swaps = 0  # 记录交换次数
 
     for i in range(length):
         index = i  # 最大或最小的序号
         for j in range(i + 1, length):
             steps += 1
+            comps += 1
             if data[j] > data[index]:  # 如果当前值大于循环中最大的记录
                 if reverse: continue
                 index = j
@@ -76,8 +78,9 @@ def selection_sort_debug(data, reverse=False, print_step=False):
         swaps += 1
         if print_step: print(data)
 
-    print("输入数据长度:", length,
-          "执行步数:", steps,
+    print("输入长度:", length,
+          "循环次数:", steps,
+          "比较次数:", comps,
           "操作次数:", swaps)
 
     return data
