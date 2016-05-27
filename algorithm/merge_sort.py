@@ -4,7 +4,7 @@ File name: merge_sort
 Reference: https://en.wikipedia.org/wiki/Merge_sort
 Introduction: 归并排序 O(n*Log(n))
 Date: 2016-05-24
-Last modified: 2016-05-25
+Last modified: 2016-05-27
 Author: enihsyou
 """
 from count_time import count_time
@@ -93,7 +93,7 @@ def merge_sort_debug(data, reverse=False, print_step=False):
     """
     length = len(data)
 
-    steps = 0  # 记录比较次数
+    steps = 0  # 记录操作步数
     comps = 0  # 记录比较次数
     swaps = 0  # 记录交换次数
 
@@ -240,7 +240,7 @@ def merge_sort_i_debug(data, reverse=False, print_step=False):
     """
     length = len(data)
 
-    steps = 0  # 记录比较次数
+    steps = 0  # 记录操作步数
     comps = 0  # 记录比较次数
     swaps = 0  # 记录交换次数
 
@@ -313,4 +313,4 @@ if __name__ == "__main__":
     print("归并排序法::输入数组进行测试")
     while True:
         inp = input()
-        print(merge_sort_debug(eval(inp), True))
+        print(merge_sort_debug(eval(inp), print_step=True))

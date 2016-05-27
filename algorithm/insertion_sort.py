@@ -58,7 +58,7 @@ def insertion_sort_debug(data, reverse=False, print_step=False):
     """
     length = len(data)  # 输入元素个数
 
-    steps = 0  # 记录比较次数
+    steps = 0  # 记录操作步数
     comps = 0  # 记录比较次数
     swaps = 0  # 记录交换次数
 
@@ -138,7 +138,7 @@ def insertion_sort_r_debug(data, reverse=False, print_step=False):
     """
     length = len(data)  # 输入元素个数
 
-    steps = 0  # 记录比较次数
+    steps = 0  # 记录操作步数
     comps = 0  # 记录比较次数
     swaps = 0  # 记录交换次数
 
@@ -218,4 +218,4 @@ if __name__ == "__main__":
     print("插入排序法::输入数组进行测试")
     while True:
         inp = input()
-        print(insertion_sort_debug(eval(inp), True))
+        print(insertion_sort_debug(eval(inp), print_step=True))

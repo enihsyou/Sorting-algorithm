@@ -35,16 +35,16 @@ def count_time(func):
         Returns:
             result (list[int]): ordered list
         """
-        result = []
+        result = []  # ordered list
         print("调用函数:", func.__name__[:-6])  # remove "_debug"
         time_log = []
         for i in range(loop_times):
             start_time = time.perf_counter()
-            result = func(data[:], reverse, print_step)
+            result = func(data[:], reverse, print_step)  # sorting
             end_time = time.perf_counter()
 
-            step_time = end_time - start_time
-            time_log += [step_time]
+            step_time = end_time - start_time  # lapsed time
+            time_log += [step_time]  # add to total time list
             print("{:<20} (第{}次)".format(step_time, i + 1))
         print("{:-<80}\n执行时间: {:<20} (共{}次)".format(
                 "", sum(time_log), loop_times))

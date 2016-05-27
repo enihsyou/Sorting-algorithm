@@ -5,7 +5,7 @@ File name: cocktail_shaker_sort
 Reference: https://en.wikipedia.org/wiki/Cocktail_shaker_sort
 Introduction: 鸡尾酒排序 O(n^2)
 Date: 2016-05-22
-Last modified: 2016-05-25
+Last modified: 2016-05-27
 Author: enihsyou
 """
 from count_time import count_time
@@ -138,4 +138,4 @@ if __name__ == "__main__":
     print("鸡尾酒排序法::输入数组进行测试")
     while True:
         inp = input()
-        print(cocktail_shaker_sort_debug(eval(inp), True))
+        print(cocktail_shaker_sort_debug(eval(inp), print_step=True))

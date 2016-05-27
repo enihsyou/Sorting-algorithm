@@ -5,7 +5,7 @@ File name: bubble_sort
 Reference: https://en.wikipedia.org/wiki/Bubble_sort
 Introduction: 冒泡排序 O(n^2)
 Date: 2016-05-15
-Last modified: 2016-05-25
+Last modified: 2016-05-27
 Author: enihsyou
 """
 from count_time import count_time
@@ -98,4 +98,4 @@ if __name__ == "__main__":
     print("冒泡排序法::输入数组进行测试")
     while True:
         inp = input()
-        print(bubble_sort_debug(eval(inp), True))
+        print(bubble_sort_debug(eval(inp), print_step=True))
