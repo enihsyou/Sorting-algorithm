@@ -184,10 +184,11 @@ def _user_choice(ranges=None):
 def _get_loop_time():
     try:
         loop_time = int(input("循环次数: "))
+        if loop_time <= 0: raise ValueError
     except ValueError:
         print("不合理的输入！")
-        _get_loop_time()
-        return
+        return _get_loop_time()
+
     return loop_time
 
 
