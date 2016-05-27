@@ -5,23 +5,32 @@ File name: main
 Reference:
 Introduction: Use random generate_function to count efficiency of algorithms.
 Date: 2016-05-20
-Last modified: 2016-05-25
+Last modified: 2016-05-28
 Author: enihsyou
 """
 
 import random
 
+import numpy
+
 import algorithm
 
 
-def generate_list(number, unique=True):
+def generate_list(number, unique=False):
     """Make list with random integers.
 
     ``number`` defined how many items in the list,
     all the number in is interval [0, ``number``).
+
+    MODIFIED:
+        160528: inspired by "http://stackoverflow.com/questions/4172131
+        /create-random-list-of-integers-in-python", using numpy instead,
+        and make ``unique=False`` default. And turn to use shuffle in unique
+        situation.
+
     Args:
         number (int): how many items in the list
-        unique (bool): whether to ust unique number (default: True)
+        unique (bool): whether to ust unique number (default: False)
     Returns:
         (list[int]): random list
     Raises:
@@ -29,13 +38,14 @@ def generate_list(number, unique=True):
     """
     if unique:
         try:
-            return random.sample(range(number), number)
+            return random.shuffle([i for i in range(number)])
         except ValueError as EXCEPTION:
             print("需要一个非负数！")
             raise EXCEPTION
     else:
         try:
-            return [random.randrange(number) for _ in range(number)]
+            randint = numpy.random.randint
+            return randint(0, number, number).tolist()
         except ValueError as EXCEPTION:
             print("需要一个非负数！")
             raise EXCEPTION
