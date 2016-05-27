@@ -65,11 +65,12 @@ def bubble_sort_debug(data, reverse=False, print_step=False):
                 if reverse: continue
                 data[i], data[j] = data[j], data[i]
                 swaps += 1
+                if print_step: print(data)  # 打印每步操作之后结果
 
             elif reverse:  # 如果数据从小到大
                 data[i], data[j] = data[j], data[i]
                 swaps += 1
-            if print_step: print(data)  # 打印每步操作之后结果
+                if print_step: print(data)  # 打印每步操作之后结果
             steps += 1
 
     print("输入长度:", length,
@@ -85,14 +86,14 @@ def bubble_sort_debug(data, reverse=False, print_step=False):
 #############
 
 # 调用测试
-# print(bubble_sort([4, 7, 6, 5, 3, 2, 1]))
-# print(bubble_sort([4, 7, 6, 5, 3, 2, 1], reverse=True))
+# print(bubble_sort([3, 5, 4, 8, 2, 7, 6, 0, 9, 1]))
+# print(bubble_sort([3, 5, 4, 8, 2, 7, 6, 0, 9, 1], reverse=True))
 # 计时测试
-# bubble_sort_debug([4, 7, 6, 5, 3, 2, 1])
-# bubble_sort_debug([4, 7, 6, 5, 3, 2, 1], reverse=True)
+# bubble_sort_debug([3, 5, 4, 8, 2, 7, 6, 0, 9, 1])
+# bubble_sort_debug([3, 5, 4, 8, 2, 7, 6, 0, 9, 1], reverse=True)
 # 步骤测试
-# bubble_sort_debug([4, 7, 6, 5, 3, 2, 1], print_step=True)
-# bubble_sort_debug([4, 7, 6, 5, 3, 2, 1], reverse=True, print_step=True)
+# bubble_sort_debug([3, 5, 4, 8, 2, 7, 6, 0, 9, 1], print_step=True)
+# bubble_sort_debug([3, 5, 4, 8, 2, 7, 6, 0, 9, 1],reverse=True,print_step=True)
 
 if __name__ == "__main__":
     print("冒泡排序法::输入数组进行测试")

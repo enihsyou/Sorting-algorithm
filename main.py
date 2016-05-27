@@ -132,7 +132,7 @@ def test_algo(choice):
             user_choice = _user_choice(range(4 + 1))
 
             inp = _t_size()
-            if inp is None: break
+            if inp is None or user_choice is None: break
             ranlist = generate_list(inp)
             if choice == 2:
                 if user_choice == 1:
