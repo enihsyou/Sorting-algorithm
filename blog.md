@@ -46,10 +46,8 @@
 知道了基础的信息，掌握了基本技能之后就该开始真刀真枪地干了！
 
 ### 随机数列表
-首先我们需要一个由随机数组成的数组列表。
-最简单直接地，Python官方标准库中有个叫[random][]的用来生成随机数的库，很明显就是为我们准备的。
-
-我们需要她的时候只需要简单地`import random`就行。现在初始阶段，只是简单地需要一些随机正整数，强大的Python提供了[列表推导式][list_comprehensions]来实现一行生成一个列表的功能。我们创建一个名为`generate_list`的函数来完成这个经常会被调用的操作。
+首先我们需要一个由随机数组成的数组列表。最简单直接地，Python官方标准库中有个叫[random][]的用来生成随机数的库，很明显就是为我们准备的。
+在我们需要她的时候只需要简单地`import random`就行。现在初始阶段，只是简单地需要一些随机正整数，强大的Python提供了[列表推导式][list_comprehensions]来实现一行生成一个列表的功能。我们创建一个名为`generate_list`的函数来完成这个经常会被调用的操作。
 
 ```python
 import random
@@ -93,3 +91,41 @@ def count_time(func):
 
 ---
 准备工作完成后，接下来就是正戏了！
+
+
+
+
+------------------------------------------------------------------------------
+
+##$O(n^2)$系列
+一般人第一次接触到的排序算法应该都是$O(n^2)$等级的吧。常见的有 冒泡排序，选择排序，插入排序···
+
+###冒泡排序
+冒泡排序是利用两层循环 不断地将数据中比较大的数字交换到最上面来，看上去就像水中的气泡冒出来一样。
+
+想法很简单，实现起来也是如此。循环中，看到循序不一样的就交换一次。
+
+```python
+def bubble_sort(data, reverse=False):
+    """Bubble sort
+
+    Args:
+        data (List[int]): list to sort, need a not None list
+    Returns:
+        List[int]: 有序列表
+    """
+    length = len(data)
+
+    for i in range(length):
+        for j in range(i + 1, length):  # 从i + 1开始 减少循环次数
+            if data[i] < data[j]:  # 从大到小 如果反了交换
+                if reverse: continue
+                data[i], data[j] = data[j], data[i]
+            elif reverse:  # 如果数据从小到大
+                data[i], data[j] = data[j], data[i]
+
+    return data
+```
+
+是不是很直接，当然效率也是很感人···
+在我这个小奔腾上面进行
