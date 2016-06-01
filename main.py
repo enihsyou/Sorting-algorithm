@@ -5,7 +5,7 @@ File name: main
 Reference:
 Introduction: Use random generate_function to count efficiency of algorithms.
 Date: 2016-05-20
-Last modified: 2016-05-28
+Last modified: 2016-06-01
 Author: enihsyou
 """
 
@@ -51,6 +51,8 @@ def generate_list(number, unique=False):
             raise EXCEPTION
 
 
+algorithm.cocktail_shaker_sort.cocktail_shaker_sort(generate_list(10000))
+
 def judge(random_list, debug=False, steps=False, func=None, ranges=""):
     """Run the test.
 
@@ -89,8 +91,7 @@ def judge(random_list, debug=False, steps=False, func=None, ranges=""):
     else:  # 若没有指定，使用全部
         ranges = algorithm.__all__
 
-    loop_time = 0
-    if debug: loop_time = _get_loop_time()
+    loop_time = _get_loop_time()
 
     for algo in ranges:
         if debug:
@@ -98,9 +99,7 @@ def judge(random_list, debug=False, steps=False, func=None, ranges=""):
             command(random_list[:], False, steps, loop_time)  # False:从大到小
         else:
             command = getattr(getattr(algorithm, algo), algo)
-            print("调用函数: {}\n"
-                  "有序列表: \n{}\n".format(command.__name__,
-                                        command(random_list[:])))
+            command(random_list[:], loop_times=loop_time)
 
 
 def test_algo(choice):

@@ -5,16 +5,45 @@ File name: insertion_sort
 Reference: https://en.wikipedia.org/wiki/Insertion_sort
 Introduction: 插入排序 O(n^2)
 Date: 2016-05-21
-Last modified: 2016-05-23
+Last modified: 2016-06-01
 Author: enihsyou
 """
 from count_time import count_time
+from count_time import count_time_debug
 
 
-def insertion_sort(data, reverse=False):
+@count_time
+def insertion_sort(data):
     """Insertion sort
 
     采用了非递归的方式，改用循环
+
+    Args:
+        data (List[int]): list to sort, need a not None list
+
+    Returns:
+        List[int]: ordered list
+    """
+    length = len(data)  # 输入元素个数
+
+    for i in range(1, length):  # 假设第一个元素已经有序
+        now_num = data[i]
+        j = 0  # while循环的指针
+
+        # 从小到大 如果待排元素大于有序列表中的当前元素 找到该插入的位置
+        while data[j] > now_num and j < i:
+            j += 1
+        if j == i: continue  # 如果当前位正确 不必交换
+        data = data[:j] + [now_num] + data[j:i] + data[i + 1:]
+
+    return data
+
+
+@count_time
+def insertion_sort_reverse(data, reverse=False):
+    """Insertion sort ver.reverse
+
+    采用了非递归的方式，改用循环。支持从小到大排序，可以用[::-1]提升效率
 
     Args:
         data (List[int]): list to sort, need a not None list
@@ -42,7 +71,7 @@ def insertion_sort(data, reverse=False):
     return data
 
 
-@count_time
+@count_time_debug
 def insertion_sort_debug(data, reverse=False, print_step=False):
     """Insertion sort ver.debug
 
@@ -93,6 +122,7 @@ def insertion_sort_debug(data, reverse=False, print_step=False):
     return data
 
 
+@count_time
 def insertion_sort_r(data, reverse=False):
     """Insertion sort ver.recursive
 
@@ -122,7 +152,7 @@ def insertion_sort_r(data, reverse=False):
     return last + [data[0]]  # 如果首元素大于整个列表
 
 
-@count_time
+@count_time_debug
 def insertion_sort_r_debug(data, reverse=False, print_step=False):
     """Insertion sort ver.recursive_debug
 

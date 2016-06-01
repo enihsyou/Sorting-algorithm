@@ -4,16 +4,73 @@ File name: merge_sort
 Reference: https://en.wikipedia.org/wiki/Merge_sort
 Introduction: 归并排序 O(n*Log(n))
 Date: 2016-05-24
-Last modified: 2016-05-27
+Last modified: 2016-06-01
 Author: enihsyou
 """
-from count_time import count_time
+from count_time import count_time_debug, count_time
 
 
-def merge_sort(data, reverse=False):
+@count_time
+def merge_sort(data):
     """Merge sort ver.recursive
 
     归并排序，递归调用
+    Args:
+        data (List[int]): list to sort, need a not None list
+
+    Returns:
+        List[int]: ordered list
+    """
+    length = len(data)
+
+    def _merge(_left, _right):
+        if _left == _right:
+            return
+
+        # 先分治
+        mid = (_left + _right) // 2  # 对半分
+
+        _merge(_left, mid)
+        _merge(mid + 1, _right)
+
+        # 交换顺序错了的两个元素
+        if _right - _left == 1 and data[_left] < data[_right]:
+            data[_left], data[_right] = data[_right], data[_left]
+
+        temp = []  # 合并操作的临时列表
+        left_side = _left  # 左半边指针
+        right_side = mid + 1  # 右半边指针
+
+        # 进行合并
+        # [_left, mid] [mid + 1, _right] 分治的左右范围
+        # [left_side, mid] [right_side, _right] 合并操作时的范围
+        while left_side <= mid and right_side <= _right:
+            if data[left_side] >= data[right_side]:  # 左边元素更大
+                temp += [data[left_side]]
+                left_side += 1
+            else:
+                temp += [data[right_side]]  # 右边元素更大
+                right_side += 1
+        while left_side <= mid:  # 左半边还有剩余元素
+            temp += [data[left_side]]
+            left_side += 1
+        while right_side <= _right:  # 右半边还有剩余元素
+            temp += [data[right_side]]
+            right_side += 1
+
+        data[_left:_right + 1] = temp  # 切片操作范围 [_left, _right + 1)
+
+    _merge(0, length - 1)  # 开始排序
+
+    return data
+
+@count_time
+def merge_sort(data, reverse=False):
+    """Merge sort ver.recursive_reverse
+
+    归并排序，递归调用
+    支持从小到大排序，可以用[::-1]提升效率
+
     Args:
         data (List[int]): list to sort, need a not None list
         reverse (bool): whether to sort descending (default: False)
@@ -78,7 +135,7 @@ def merge_sort(data, reverse=False):
     return data
 
 
-@count_time
+@count_time_debug
 def merge_sort_debug(data, reverse=False, print_step=False):
     """Merge sort ver.recursive_debug
 
@@ -224,7 +281,7 @@ def merge_sort_i(data, reverse=False):
     return data
 
 
-@count_time
+@count_time_debug
 def merge_sort_i_debug(data, reverse=False, print_step=False):
     """Merge sort ver.iterative_debug
 

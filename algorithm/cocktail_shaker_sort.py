@@ -5,16 +5,52 @@ File name: cocktail_shaker_sort
 Reference: https://en.wikipedia.org/wiki/Cocktail_shaker_sort
 Introduction: 鸡尾酒排序 O(n^2)
 Date: 2016-05-22
-Last modified: 2016-05-27
+Last modified: 2016-06-01
 Author: enihsyou
 """
-from count_time import count_time
+from count_time import count_time_debug, count_time
 
 
-def cocktail_shaker_sort(data, reverse=False):
+@count_time
+def cocktail_shaker_sort(data):
     """Cocktail shaker sort
 
     Use ``swapped`` to end if necessary.
+
+    Args:
+        data (List[int]): list to sort, need a not None list
+
+    Returns:
+        List[int]: ordered list
+    """
+    length = len(data)
+
+    left, right = 0, length - 1  # 有序序号 左边和右边
+
+    while left < right:
+        swapped = False  # 是否一遍过去有没有改变 没有即 已有序
+        for i in range(left, right):
+            if data[i] < data[i + 1]:  # 与后面一个元素对比
+                data[i], data[i + 1] = data[i + 1], data[i]
+                swapped = True
+        right -= 1
+        if not swapped: break
+        for i in range(right, left, -1):  # 与前面一个元素对比
+            if data[i - 1] < data[i]:
+                data[i], data[i - 1] = data[i - 1], data[i]
+                swapped = True
+        left += 1
+        if not swapped: break
+
+    return data
+
+
+@count_time
+def cocktail_shaker_sort_reverse(data, reverse=False):
+    """Cocktail shaker sort ver.reverse
+
+    Use ``swapped`` to end if necessary.
+    支持从小到大排序，可以用[::-1]提升效率
 
     Args:
         data (List[int]): list to sort, need a not None list
@@ -53,7 +89,7 @@ def cocktail_shaker_sort(data, reverse=False):
     return data
 
 
-@count_time
+@count_time_debug
 def cocktail_shaker_sort_debug(data, reverse=False, print_step=False):
     """Cocktail shaker sort ver.debug
 
@@ -80,19 +116,21 @@ def cocktail_shaker_sort_debug(data, reverse=False, print_step=False):
         swapped = False
         for i in range(left, right):
             steps += 1
-
             comps += 1
             if data[i] < data[i + 1]:  # 与后面一个元素对比
                 if reverse: continue
                 data[i], data[i + 1] = data[i + 1], data[i]
                 swapped = True
                 swaps += 1
+                if print_step: print(data)
             elif reverse:
                 data[i], data[i + 1] = data[i + 1], data[i]
                 swapped = True
                 swaps += 1
+                if print_step: print(data)
+
         right -= 1
-        if print_step: print(data)
+        if not swapped: break
 
         for i in range(right, left, -1):  # 与前面一个元素对比
             steps += 1
@@ -103,13 +141,14 @@ def cocktail_shaker_sort_debug(data, reverse=False, print_step=False):
                 data[i], data[i - 1] = data[i - 1], data[i]
                 swapped = True
                 swaps += 1
+                if print_step: print(data)
             elif reverse:
                 data[i], data[i - 1] = data[i - 1], data[i]
                 swapped = True
                 swaps += 1
-        left += 1
+                if print_step: print(data)
 
-        if print_step: print(data)
+        left += 1
 
     print("输入长度:", length,
           "循环次数:", steps,

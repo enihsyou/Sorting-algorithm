@@ -4,18 +4,46 @@ File name: quick_sort
 Reference: https://en.wikipedia.org/wiki/Quicksort
 Introduction: Quick sort, first pivot. O(n*Log(n))
 Date: 2016-05-27
-Last modified: 2016-05-27
+Last modified: 2016-06-01
 Author: enihsyou
 """
-from count_time import count_time
+from count_time import count_time_debug, count_time
 
 
-def quick_sort(data, reverse=False):
+@count_time
+def quick_sort(data):
     """Quick sort
 
     递归解决列表排序，使用局部变量加快访问，列表推倒式简单方便，可能效率不如原生的。
     空间复杂度能有O(n)。
     没有使用迭代的方式，因为测试之后发现效率更低。
+
+    Args:
+        data (List[int]): list to sort, need a not None list
+
+    Returns:
+        List[int]: ordered list
+    """
+
+    def _quick_sort(_data):
+        if len(_data) <= 1: return _data
+        pivot = _data[0]
+
+        left = _quick_sort([x for x in _data[1:] if x <= pivot])
+        right = _quick_sort([x for x in _data[1:] if x > pivot])
+        return right + [pivot] + left
+
+    return _quick_sort(data)
+
+
+@count_time
+def quick_sort_reverse(data, reverse=False):
+    """Quick sort ver.reverse
+
+    递归解决列表排序，使用局部变量加快访问，列表推倒式简单方便，可能效率不如原生的。
+    空间复杂度能有O(n)。
+    没有使用迭代的方式，因为测试之后发现效率更低。
+    支持从小到大排序，可以用[::-1]提升效率
 
     Args:
         data (List[int]): list to sort, need a not None list
@@ -39,7 +67,7 @@ def quick_sort(data, reverse=False):
     return _quick_sort(data)
 
 
-@count_time
+@count_time_debug
 def quick_sort_debug(data, reverse=False, print_step=False):
     """Quick sort ver.debug
 

@@ -5,17 +5,42 @@ File name: bubble_sort
 Reference: https://en.wikipedia.org/wiki/Bubble_sort
 Introduction: 冒泡排序 O(n^2)
 Date: 2016-05-15
-Last modified: 2016-05-27
+Last modified: 2016-06-01
 Author: enihsyou
 """
-from count_time import count_time
+from count_time import count_time_debug, count_time
 
 
-def bubble_sort(data, reverse=False):
+@count_time
+def bubble_sort(data):
     """Bubble sort
 
     输入一组数据 默认从大到小排序
     第一次就想出来的方式
+
+    Args:
+        data (List[int]): list to sort, need a not None list
+
+    Returns:
+        List[int]: ordered list
+    """
+    length = len(data)
+
+    for i in range(length):
+        for j in range(i + 1, length):  # 从i + 1开始 减少循环次数
+            if data[i] < data[j]:  # 从大到小 如果反了交换
+                data[i], data[j] = data[j], data[i]
+
+    return data
+
+
+@count_time
+def bubble_sort_reverse(data, reverse=False):
+    """Bubble sort ver.reverse
+
+    输入一组数据 默认从大到小排序
+    第一次就想出来的方式
+    支持从小到大排序，可以用[::-1]提升效率
 
     Args:
         data (List[int]): list to sort, need a not None list
@@ -37,7 +62,7 @@ def bubble_sort(data, reverse=False):
     return data
 
 
-@count_time
+@count_time_debug
 def bubble_sort_debug(data, reverse=False, print_step=False):
     """Bubble sort ver.debug
 
