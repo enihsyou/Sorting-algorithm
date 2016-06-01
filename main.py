@@ -51,7 +51,7 @@ def generate_list(number, unique=False):
             raise EXCEPTION
 
 
-algorithm.cocktail_shaker_sort.cocktail_shaker_sort(generate_list(10000))
+# algorithm.insertion_sort.insertion_sort(generate_list(10000))
 
 def judge(random_list, debug=False, steps=False, func=None, ranges=""):
     """Run the test.

@@ -27,8 +27,8 @@ def insertion_sort(data):
     length = len(data)  # 输入元素个数
 
     for i in range(1, length):  # 假设第一个元素已经有序
-        now_num = data[i]
-        j = 0  # while循环的指针
+        now_num = data[i]  # 将要插入的元素
+        j = 0  # while循环的指针，指向当前循环中比较的元素的序号
 
         # 从小到大 如果待排元素大于有序列表中的当前元素 找到该插入的位置
         while data[j] > now_num and j < i:
@@ -55,8 +55,9 @@ def insertion_sort_reverse(data, reverse=False):
     length = len(data)  # 输入元素个数
 
     for i in range(1, length):  # 假设第一个元素已经有序
-        now_num = data[i]
-        j = 0  # while循环的指针
+        now_num = data[i]  # 将要插入的元素
+        j = 0  # while循环的指针，指向当前循环中比较的元素的序号
+
         if reverse:
             # 从大到小 如果待排元素大于有序列表中的当前元素 找到该插入的位置
             while data[j] < now_num and j < i:
@@ -92,8 +93,9 @@ def insertion_sort_debug(data, reverse=False, print_step=False):
     swaps = 0  # 记录交换次数
 
     for i in range(1, length):  # 假设第一个元素已经有序
-        now_num = data[i]
-        j = 0  # while循环的指针
+        now_num = data[i]  # 将要插入的元素
+        j = 0  # while循环的指针，指向当前循环中比较的元素的序号
+
         if reverse:
             # 从大到小 如果待排元素大于有序列表中的当前元素 找到该插入的位置
             comps += 1
