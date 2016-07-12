@@ -30,6 +30,7 @@ def merge_sort(data):
         # 先分治
         mid = (_left + _right) // 2  # 对半分
 
+        # 再调用自身排序
         _merge(_left, mid)
         _merge(mid + 1, _right)
 
@@ -63,6 +64,7 @@ def merge_sort(data):
     _merge(0, length - 1)  # 开始排序
 
     return data
+
 
 @count_time
 def merge_sort(data, reverse=False):

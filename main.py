@@ -70,14 +70,16 @@ def judge(random_list, debug=False, steps=False, func=None, ranges=""):
     """
     if func:  # 处理 当有函数名指定的时候
         try:
-            command = getattr(getattr(algorithm, func), func + '_debug')
+            # command = getattr(getattr(algorithm, func), func + '_debug')
+            command = getattr(getattr(algorithm, func), func)
         except AttributeError:
             print("输入的名字不存在！")
             func2 = input("输入名称: ")
             judge(random_list, debug, steps, func2)
             return
         loop_time = _get_loop_time()
-        command(random_list[:], False, steps, loop_time)  # False:从大到小
+        # command(random_list[:], False, steps, loop_time)  # False:从大到小
+        command(random_list[:], False, loop_time)  # False:从大到小
 
     if ranges:  # 处理 当有函数名范围指定的时候
         try:
@@ -136,7 +138,7 @@ def test_algo(choice):
         else:
             print("1: 所有算法\n"
                   "2: O(n^2)\n"
-                  "3: O(n*Log(n)\n"
+                  "3: O(n*Log(n))\n"
                   "4: 手动输入一个")
             user_choice = _user_choice(range(4 + 1))
 
