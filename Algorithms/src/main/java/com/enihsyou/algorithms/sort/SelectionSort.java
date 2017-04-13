@@ -3,8 +3,9 @@ package com.enihsyou.algorithms.sort;
 import org.jetbrains.annotations.NotNull;
 
 public class SelectionSort implements Sorter {
+    @SuppressWarnings("Duplicates")
     @Override
-    public <T> Comparable<T>[] sort(final Comparable<T>[] list) {
+    public <T> Comparable<T>[] sort(@NotNull final Comparable<T>[] list) {
         for (int i = 0; i < list.length; i++) {
             int min_index = i;
             for (int j = i + 1; j < list.length; j++) {
@@ -15,6 +16,7 @@ public class SelectionSort implements Sorter {
         return list;
     }
 
+    @SuppressWarnings("Duplicates")
     @Override
     public double[] sort(@NotNull final double[] list) {
         for (int i = 0; i < list.length; i++) {
@@ -27,6 +29,7 @@ public class SelectionSort implements Sorter {
         return list;
     }
 
+    @SuppressWarnings("Duplicates")
     @Override
     public int[] sort(@NotNull final int[] list) {
         for (int i = 0; i < list.length; i++) {

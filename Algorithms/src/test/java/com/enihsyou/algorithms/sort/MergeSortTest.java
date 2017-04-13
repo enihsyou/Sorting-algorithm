@@ -5,13 +5,13 @@ import org.junit.Test;
 
 import static junit.framework.TestCase.assertTrue;
 
-public class InsertionSortTest {
-    private InsertionSort mSorter;
+public class MergeSortTest {
+    private MergeSort mSorter;
     private int mSize;
 
     @Before
     public void setUp() throws Exception {
-        mSorter = new InsertionSort();
+        mSorter = new MergeSort();
         mSize = 20;
     }
 
@@ -28,6 +28,7 @@ public class InsertionSortTest {
         Sorter.printResult(sorted);
         assertTrue(Sorter.isSorted(sorted));
     }
+
 
     @Test
     public void sort2() throws Exception {

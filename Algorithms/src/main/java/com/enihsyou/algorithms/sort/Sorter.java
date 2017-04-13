@@ -12,17 +12,31 @@ public interface Sorter {
 
     int[] sort(@NotNull final int[] list);
 
+    @SuppressWarnings("unchecked")
     static <T> boolean less(@NotNull Comparable<T>[] list, int i, int j) {
-        //noinspection unchecked
+
         return list[i].compareTo((T) list[j]) < 0;
+    }
+
+    @SuppressWarnings("unchecked")
+    static <T> boolean less(@NotNull Comparable<T>[] list1, @NotNull Comparable<T>[] list2, int i1, int i2) {
+        return list1[i1].compareTo((T) list2[i2]) < 0;
     }
 
     static boolean less(@NotNull int[] list, int i, int j) {
         return list[i] < list[j];
     }
 
+    static boolean less(@NotNull int[] list1, @NotNull int[] list2, int i1, int i2) {
+        return list1[i1] < list2[i2];
+    }
+
     static boolean less(@NotNull double[] list, int i, int j) {
         return list[i] < list[j];
+    }
+
+    static boolean less(@NotNull double[] list1, @NotNull double[] list2, int i1, int i2) {
+        return list1[i1] < list2[i2];
     }
 
     static <T> void swap(@NotNull Comparable<T>[] list, int i, int j) {
@@ -31,16 +45,34 @@ public interface Sorter {
         list[j] = temp;
     }
 
+    static <T> void swap(@NotNull Comparable<T>[] list1, @NotNull Comparable<T>[] list2, int i1, int i2) {
+        final Comparable<T> temp = list1[i1];
+        list1[i1] = list2[i2];
+        list2[i2] = temp;
+    }
+
     static void swap(@NotNull int[] list, int i, int j) {
         final int temp = list[i];
         list[i] = list[j];
         list[j] = temp;
     }
 
+    static void swap(@NotNull int[] list1, @NotNull int[] list2, int i1, int i2) {
+        final int temp = list1[i1];
+        list1[i1] = list2[i2];
+        list2[i2] = temp;
+    }
+
     static void swap(@NotNull double[] list, int i, int j) {
         final double temp = list[i];
         list[i] = list[j];
         list[j] = temp;
+    }
+
+    static void swap(@NotNull double[] list1, @NotNull double[] list2, int i1, int i2) {
+        final double temp = list1[i1];
+        list1[i1] = list2[i2];
+        list2[i2] = temp;
     }
 
     static int[] generateRandomIntegers(int size) {
