@@ -6,11 +6,11 @@ import java.util.Arrays;
 import java.util.Random;
 
 public interface Sorter {
-    <T> Comparable<T>[] sort(@NotNull final Comparable<T>[] list);
+    int[] sort(@NotNull final int[] list);
 
     double[] sort(@NotNull final double[] list);
 
-    int[] sort(@NotNull final int[] list);
+    <T> Comparable<T>[] sort(@NotNull final Comparable<T>[] list);
 
     @SuppressWarnings("unchecked")
     static <T> boolean less(@NotNull Comparable<T>[] list, int i, int j) {
