@@ -2,8 +2,6 @@ package com.enihsyou.algorithms.sort;
 
 import org.jetbrains.annotations.NotNull;
 
-import java.util.Arrays;
-
 public class QuickSort implements Sorter {
     public static void main(String[] args) {
         QuickSort sorter = new QuickSort();
@@ -18,9 +16,9 @@ public class QuickSort implements Sorter {
     public int[] sort(@NotNull final int[] list) {
         if (list.length < 2) { return list; }
         /*2 * Ceiling(Log2(list.length))*/
-        int[] stack = new int[2 * (int) Math.ceil(Math.log(list.length) / Math.log(2))];
+        int[] stack = new int[4 * (int) Math.ceil(Math.log(list.length) / Math.log(2))];
         int stackTop = -1;
-        System.out.println(Arrays.toString(list));
+        // System.out.println(Arrays.toString(list));
         stack[++stackTop] = 0;
         stack[++stackTop] = list.length - 1;
         while (stackTop > 0) {
@@ -53,7 +51,7 @@ public class QuickSort implements Sorter {
         /*2 * Ceiling(Log2(list.length))*/
         int[] stack = new int[2 * (int) Math.ceil(Math.log(list.length) / Math.log(2))];
         int stackTop = -1;
-        System.out.println(Arrays.toString(list));
+        // System.out.println(Arrays.toString(list));
         stack[++stackTop] = 0;
         stack[++stackTop] = list.length - 1;
         while (stackTop > 0) {
@@ -86,7 +84,7 @@ public class QuickSort implements Sorter {
         /*2 * Ceiling(Log2(list.length))*/
         int[] stack = new int[2 * (int) Math.ceil(Math.log(list.length) / Math.log(2))];
         int stackTop = -1;
-        System.out.println(Arrays.toString(list));
+        // System.out.println(Arrays.toString(list));
         stack[++stackTop] = 0;
         stack[++stackTop] = list.length - 1;
         while (stackTop > 0) {
