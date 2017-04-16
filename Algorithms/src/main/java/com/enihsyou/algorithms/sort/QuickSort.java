@@ -5,8 +5,17 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Arrays;
 
 public class QuickSort implements Sorter {
+    public static void main(String[] args) {
+        QuickSort sorter = new QuickSort();
+        final int size = args.length == 1 ? Integer.parseInt(args[0]) : 20;
+        System.out.format("%d integers%n", size);
+        Sorter.printResult(sorter.sort(Sorter.generateRandomIntegers(size)));
+        System.out.format("%d doubles%n", size);
+        Sorter.printResult(sorter.sort(Sorter.generateRandomDoubles(size)));
+    }
+
     @Override
-    public <T> Comparable<T>[] sort(@NotNull final Comparable<T>[] list) {
+    public int[] sort(@NotNull final int[] list) {
         if (list.length < 2) { return list; }
         /*2 * Ceiling(Log2(list.length))*/
         int[] stack = new int[2 * (int) Math.ceil(Math.log(list.length) / Math.log(2))];
@@ -72,7 +81,7 @@ public class QuickSort implements Sorter {
     }
 
     @Override
-    public int[] sort(@NotNull final int[] list) {
+    public <T> Comparable<T>[] sort(@NotNull final Comparable<T>[] list) {
         if (list.length < 2) { return list; }
         /*2 * Ceiling(Log2(list.length))*/
         int[] stack = new int[2 * (int) Math.ceil(Math.log(list.length) / Math.log(2))];
@@ -102,14 +111,5 @@ public class QuickSort implements Sorter {
             }
         }
         return list;
-    }
-
-    public static void main(String[] args) {
-        QuickSort sorter = new QuickSort();
-        final int size = args.length == 1 ? Integer.parseInt(args[0]) : 20;
-        System.out.format("%d integers%n", size);
-        Sorter.printResult(sorter.sort(Sorter.generateRandomIntegers(size)));
-        System.out.format("%d doubles%n", size);
-        Sorter.printResult(sorter.sort(Sorter.generateRandomDoubles(size)));
     }
 }
