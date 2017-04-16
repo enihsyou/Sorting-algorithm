@@ -55,7 +55,7 @@ public class QuickSort implements Sorter {
             int lessThan = lo, moreThan = hi, i = lo;
             while (i <= moreThan) { // 等于是为了做最后一次交换
                 if (Sorter.less(list, i, lessThan)) { Sorter.swap(list, i++, lessThan++); }
-                else if (list[lessThan] == list[i]) { i++; }
+                // else if (list[lessThan] == list[i]) { i++; }  浮点数不进行等于的判断
                 else { Sorter.swap(list, moreThan--, i); }
             }
             // System.out.format("%s lt:%d i:%d gt:%d%n", Arrays.toString(list), lessThan, i, moreThan);
