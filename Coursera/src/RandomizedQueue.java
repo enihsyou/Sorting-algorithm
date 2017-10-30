@@ -59,9 +59,8 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
     public Item dequeue() {
         if (isEmpty()) { throw new NoSuchElementException(); }
         ensureSize();
-        final int pos = StdRandom.uniform(size--);
-        final Object item = items[pos];
-        items[pos] = null;
+        final Object item = items[size--];
+        items[size] = null;
         // noinspection unchecked
         return (Item) item;
     }
