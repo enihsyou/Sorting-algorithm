@@ -1,9 +1,11 @@
 # -*- codine: UTF-8 -*-
-from random import randint, randrange, choice, random
+from random import choice, random
 from time import sleep
 
 import binarytree
-import string, sys
+import string
+
+import sys
 
 OPERATORS = ('+', '-', '*', '/')
 NUMBERS = string.ascii_lowercase
@@ -69,9 +71,19 @@ def make_node(parent: Node, depth: int):
         parent.right = Node(generate_number())
 
 
+def get_precedence(char:str)->int:
+    if char =='+' or char == '-':
+        return 1
+    if char =='*' or char == '/':
+        return 2
+    return 0
+
+
 def get_lowest(dic: dict) -> int:
-    if dic['+'] or dic['-']: return 1
-    if dic['*'] or dic['/']: return 2
+    if dic['+'] or dic['-']:
+        return 1
+    if dic['*'] or dic['/']:
+        return 2
 
     return 0
 
@@ -105,8 +117,8 @@ def remove_parentheses(s: str, begin: int = 0, _stack=[]):
             if left_side_operator is not None \
                     and (left_side_operator == '-' and inner_operators['+'] + inner_operators['-']
                          or left_side_operator == '/'
-                         or OPERATORS.index(left_side_operator) > get_lowest(inner_operators)) \
-                    or (pointer < len(s) and s[pointer] in OPERATORS and OPERATORS.index(s[pointer]) > get_lowest(
+                         or get_precedence(left_side_operator) > get_lowest(inner_operators)) \
+                    or (pointer < len(s) and s[pointer] in OPERATORS and get_precedence(s[pointer]) > get_lowest(
                             inner_operators)):
                 pass
             else:
@@ -125,7 +137,8 @@ def remove_parentheses(s: str, begin: int = 0, _stack=[]):
     print(flush=True)
 
 
-remove_parentheses("(((((o+w)+j)-b)*((e-i)*((l/(e-x))-(t/d))))*e)")
+remove_parentheses("(((q-o)*d)/i)")
+remove_parentheses("((x-m)-f)")
 
 my_null = None
 binarytree.customize(
