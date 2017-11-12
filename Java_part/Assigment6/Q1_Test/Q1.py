@@ -103,6 +103,8 @@ def remove_parentheses(s: str, begin: int = 0, _stack=[]):  # _stack作为函数
         pointer += 1  # 指向下一个
         if char in NUMBERS:
             pass
+        elif char in string.whitespace:
+            pass
         elif char in OPERATORS:
             left_side_operator = char  # 利用局部变量记录上下文中的前一个操作符
             local_operators[char] += 1
@@ -133,6 +135,8 @@ def remove_parentheses(s: str, begin: int = 0, _stack=[]):  # _stack作为函数
                 _stack.pop()
             except IndexError as error:
                 raise ValueError("右括号不匹配") from error
+            if all(v == 0 for v in local_operators.values()):
+                remove += (begin - 1, pointer - 1)
             return local_operators, pointer, begin, remove
         else:
             raise NotImplementedError(char)
