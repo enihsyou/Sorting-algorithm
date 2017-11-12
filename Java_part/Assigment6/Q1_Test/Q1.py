@@ -134,16 +134,16 @@ def remove_parentheses(s: str, begin: int = 0, _stack=[]):  # _stack作为函数
             try:
                 _stack.pop()
             except IndexError as error:
-                raise ValueError("右括号不匹配") from error
-            if all(v == 0 for v in local_operators.values()):
+                _stack.clear()
+                raise ValueError("'%s'的右括号不匹配" % s) from error
+            if not any(local_operators.values()):
                 remove += (begin - 1, pointer - 1)
             return local_operators, pointer, begin, remove
         else:
             raise NotImplementedError(char)
     if len(_stack) != 0 or len(remove) % 2 != 0:
+        _stack.clear()
         raise ValueError("'%s'的左括号不匹配" % s)
-    # for i in sorted(remove, reverse=True):
-    #     del s[i]  # Not work
     result = "".join([c for i, c in enumerate(s) if i not in remove])
     return result
 
