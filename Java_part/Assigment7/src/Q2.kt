@@ -25,7 +25,6 @@ fun permute(listToPermute: List<Int>): List<IntArray> {
   /**
    * 深度优先方式生成排列数
    * @param currentLevel 当前处理的数字
-   * @param targetN 排列长度
    * */
   fun dfs(currentLevel: Int) {
     if (currentLevel == targetN) {
@@ -78,8 +77,8 @@ fun Queen(N: Int) {
   val input = IntArray(N, { it }).toList()
   val result = permute(input)
 
-  fun print(list: List<Int>) {
-    println(list)
+  fun print(list: IntArray) {
+    println(list.toList())
     list.forEach { value ->
       (0 until list.size).forEach { i ->
         when (i) {
@@ -92,13 +91,10 @@ fun Queen(N: Int) {
     println()
   }
   println("There are ${result.size} possible solutions, namely:\n")
-//  for (perm in result) print(perm)
+  for (perm in result) print(perm)
 }
 
 fun main(args: Array<String>) {
   val executionTime = measureTimeMillis { Queen(8) }
   println("Execution Time = $executionTime ms")
 }
-/*There are 14772512 possible solutions, namely:
-
-Execution Time = 203308 ms*/
