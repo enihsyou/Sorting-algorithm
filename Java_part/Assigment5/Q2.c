@@ -62,7 +62,7 @@ void F2(int *a, int n, int m) {
         }
         last_number = a[i];
 
-        while (first <= last) {
+        while (first < last) {
             if (a[middle] < search)
                 first = middle + 1;
             else if (a[middle] == search) {
@@ -74,8 +74,6 @@ void F2(int *a, int n, int m) {
 
             middle = (first + last) / 2;
         }
-//        if (first > last)
-//            continue;
     }
     printf("总共有%d对\n", count);
 }

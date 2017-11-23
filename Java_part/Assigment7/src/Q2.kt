@@ -24,7 +24,7 @@ fun permute(listToPermute: List<Int>): List<IntArray> {
 
   /**
    * 深度优先方式生成排列数
-   * @param currentLevel 当前处理的数字
+   * @param currentLevel &#24403;&#21069;&#22788;&#29702;&#30340;&#25968;&#23383;
    * */
   fun dfs(currentLevel: Int) {
     if (currentLevel == targetN) {
