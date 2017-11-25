@@ -23,6 +23,7 @@ public class Grid extends JPanel {
   private int blockedCellX;
   private int blockedCellY;
 
+
   public Grid(int level) {
     N = BigInteger.TWO.pow(level).intValue();
     System.out.println("N = " + N);
@@ -32,14 +33,29 @@ public class Grid extends JPanel {
 
     panelHeight = boardHeight + leftPadding + rightPadding;
     panelWidth = boardWidth + topPadding + bottomPadding;
-    blockedCellX = 0;
-    blockedCellY = 0;
+    blockedCellX = -cellSize; // 最开始不画出来
+    blockedCellY = -cellSize;
 
     setPreferredSize(new Dimension(panelWidth, panelHeight));
   }
 
   public static void setINTERVAL(final int INTERVAL) {
     Grid.INTERVAL = INTERVAL;
+  }
+
+  private static void sleep() {
+    try {
+      TimeUnit.MILLISECONDS.sleep(INTERVAL);
+    } catch (InterruptedException e) {
+      e.printStackTrace();
+    }
+  }
+
+  public Point getCell(final int x, final int y) {
+    if (x < leftPadding || x > panelWidth - rightPadding || y < topPadding || y > panelHeight - bottomPadding) {
+      return null;
+    }
+    return new Point((x - leftPadding) / cellSize, (y - topPadding) / cellSize);
   }
 
   public int getN() {
@@ -68,7 +84,6 @@ public class Grid extends JPanel {
 
   @Override
   protected void paintComponent(final Graphics g) {
-
     super.paintComponent(g);
     for (int x = 0; x < N; x++) {
       for (int y = 0; y < N; y++) {
@@ -137,7 +152,7 @@ public class Grid extends JPanel {
         break;
     }
     repaint();
-    sleep();
+    // sleep();
   }
 
   private void fillW(final int leftUpperX, final int leftUpperY, final Color color) {
@@ -154,14 +169,6 @@ public class Grid extends JPanel {
 
   private void fillQ(final int leftUpperX, final int leftUpperY, final Color color) {
     fillCell(leftUpperX, leftUpperY, color);
-  }
-
-  private static void sleep() {
-    try {
-      TimeUnit.MILLISECONDS.sleep(INTERVAL);
-    } catch (InterruptedException e) {
-      e.printStackTrace();
-    }
   }
 
   private void fillCell(int x, int y, Color color) {
