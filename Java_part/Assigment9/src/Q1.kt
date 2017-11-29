@@ -7,6 +7,16 @@ import kotlin.test.assertEquals
 /**
  * 1）分治算法求n个数的数组中找出第二个最大元素
  */
+fun main(args: Array<String>) {
+  Scanner(System.`in`).use { s ->
+    println("输入数组数字，以非数字结束")
+    val list = ArrayList<Long>()
+    while (s.hasNextLong())
+      list.add(s.nextLong())
+    println(list.findKthLargest(2))
+  }
+}
+
 fun <T : Comparable<T>> MutableList<T>.findKthLargest(k: Int): T {
   val n = this.size
   if (k > n || k < 0) throw IllegalArgumentException("没有这种操作")
@@ -42,17 +52,6 @@ fun <T : Comparable<T>> partition(list: MutableList<T>, left: Int, right: Int, p
   }
   swap(list, right, index)
   return index
-}
-
-
-fun main(args: Array<String>) {
-  Scanner(System.`in`).use { s ->
-    println("输入数组数字，以非数字结束")
-    val list = ArrayList<Long>()
-    while (s.hasNextLong())
-      list.add(s.nextLong())
-    println(list.findKthLargest(2))
-  }
 }
 
 
