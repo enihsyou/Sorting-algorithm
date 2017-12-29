@@ -3,7 +3,7 @@ import java.util.*
 data class Vertex(val name: String)
 data class Edge(val from: Vertex, val to: Vertex, val name: String = "$from -> $to")
 
-class Graph(val vertexes: List<Vertex>, val edges: List<Edge>) {//todo 应该使用Set
+class Graph(private val vertexes: List<Vertex>, private val edges: List<Edge>) {//todo 应该使用Set
 
     val adjacencyMatrix = Array(vertexes.size) { row ->
         BooleanArray(vertexes.size) { col ->
@@ -188,13 +188,13 @@ fun userInput() {
         println("输入完成")
         println("邻接矩阵：")
         graph.adjacencyMatrix
-            .map { it.joinToString { if (it) "1" else "0"} }
+            .map { it.joinToString { if (it) "1" else "0" } }
             .forEach(::println)
 
         println("邻接表：")
         graph.adjacencyList
             .map { it.joinToString() }
-            .forEachIndexed{index, s -> println("${vertexList[index]} -> $s") }
+            .forEachIndexed { index, s -> println("${vertexList[index]} -> $s") }
         println("接下来输入搜索起始顶点: ")
         val from = Vertex(nextLine())
         println("结果如下：")
